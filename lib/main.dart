@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sparkhub_game/screens/home.dart';
 
@@ -15,19 +16,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: AnimatedSplashScreen(
-          duration: 3000,
-          splash: const Text(
-            'SparkHub',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          nextScreen: MyHomePage(title: 'Home'),
-          splashTransition: SplashTransition.fadeTransition,
-          pageTransitionType: PageTransitionType.scale,
-          backgroundColor: Colors.blue),
+        duration: 3000,
+        splash: Image.asset(
+          'assets/logo.png',
+        ),
+        nextScreen: const MyHomePage(title: 'Home'),
+        splashTransition: SplashTransition.fadeTransition,
+        pageTransitionType: PageTransitionType.bottomToTop,
+        backgroundColor: const Color(0xff101324),
+      ),
     );
   }
 }
