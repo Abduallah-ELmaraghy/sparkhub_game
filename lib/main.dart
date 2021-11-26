@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sparkhub_game/screens/home.dart';
 
+import 'screens/levels_screen.dart';
+import 'screens/memory_game_home_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -27,5 +30,10 @@ class MyApp extends StatelessWidget {
         backgroundColor: const Color(0xff101324),
       ),
     );
+
+    /*return MaterialApp(initialRoute: '/MemoryGameLevelsPage', routes: {
+      '/MemoryGameLevelsPage': (context) => LevelsPage(),
+      '/memoeryGameHomeScreen': (context) => MemoryGameHomeScreen(),
+    });*/
   }
 }
