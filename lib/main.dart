@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sparkhub_game/screens/home.dart';
 
+import 'screens/levels_screen.dart';
+import 'screens/memory_game_home_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -27,5 +30,10 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
     );
+
+    /*return MaterialApp(initialRoute: '/MemoryGameLevelsPage', routes: {
+      '/MemoryGameLevelsPage': (context) => LevelsPage(),
+      '/memoeryGameHomeScreen': (context) => MemoryGameHomeScreen(),
+    });*/
   }
 }
