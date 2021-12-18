@@ -2,18 +2,17 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:sparkhub_game/widgets/letter_widget.dart'';
+import 'package:sparkhub_game/widgets/letter_widget.dart';
 import 'package:sparkhub_game/constants/WC_components/level_maps.dart';
 
 int highScoreLevel1 = 1;
 int highScoreLevel2 = 1;
 
-
 Random random = Random();
 randomListItem(List lst) => lst[random.nextInt(lst.length)];
 String currentText = "";
 int level = 1;
-int ?lastLevel;
+int? lastLevel;
 var clue = 20; //1 yesil 2 kirmizi
 int score = 0;
 Color color1 = Colors.white;
@@ -31,7 +30,7 @@ const Color activatedColor = Color(0xff00adb5);
 
 List<String> wroteBefore = List<String>();
 List<LetterWidget> map = generateMap(getAllCoords(level));
-Map<String, String> wordMap;
+Map<String, String>? wordMap;
 int barColour = 0; // 1yesil 2 kirmizi
 
 bool checkAnswer(String answer) {
@@ -137,7 +136,7 @@ List<int> convertList(String word, int level) {
 }
 
 List<LetterWidget> generateMap(List<int> coords) {
-List<LetterWidget> map = List<LetterWidget>();
+  List<LetterWidget> map = List<LetterWidget>();
 
   for (int i = 0; i < 36; i++) {
     LetterWidget _newWidget;
@@ -211,7 +210,7 @@ void updateLetters() {
     letter3 = mapLetter2[2];
     letter4 = mapLetter2[3];
     letter5 = mapLetter2[4];
-   }
+  }
   // else if (level == 3) {
   //   letter1 = mapLetter3[0];
   //   letter2 = mapLetter3[1];
@@ -297,7 +296,8 @@ void checkLevel() {
   if (level == 1) {
     wordMap = wordsMap1;
   } else if (level == 2) {
-    wordMap = wordsMap2;}
+    wordMap = wordsMap2;
+  }
   // } else if (level == 3) {
   //   wordMap = wordsMap3;
   // } else if (level == 4) {
