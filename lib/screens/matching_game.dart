@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:sparkhub_game/constants/style.dart';
+
 class MatchingGame extends StatefulWidget {
   createState() => MatchingGameState();
 }
 
 class MatchingGameState extends State<MatchingGame> {
-  final Map<String, bool> score =
-      {}; //map for the score takes the string (emoji) and bool (correct or not)
+  final Map<String, bool> score ={}; //map for the score takes the string (emoji) and bool (correct or not)
 
   final Map choices = {
     '🦞': Colors.red,
@@ -32,10 +33,10 @@ class MatchingGameState extends State<MatchingGame> {
   @override
   Widget build(BuildContext context) {
    return Scaffold(
-     backgroundColor: Colors.black,
+     backgroundColor: kBackground,
       appBar: AppBar(
-        title: Text('Score ${score.length} / 6'),
-        backgroundColor: Colors.grey,
+        title: Text('Score ${score.length} / 6',style:TextStyle(color: kBackground)),
+        backgroundColor: kButtonColor,
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.refresh),
@@ -47,7 +48,7 @@ class MatchingGameState extends State<MatchingGame> {
         },
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.grey,
+        color: kButtonColor,
         child: Container(
           height: 50.0,
         ),
@@ -57,29 +58,31 @@ class MatchingGameState extends State<MatchingGame> {
         // all the app in row
         mainAxisAlignment: MainAxisAlignment.spaceAround, // Place the free space evenly between the children widget and page
         children: [
-          Column(
-              // emojis
+          Container( padding: const EdgeInsets.all(15),
+            child: Column(
+                // emojis
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: choices.keys.map((emoji) // the selected emoji
+                    {
+                  return Draggable<String>(
+                    data: emoji,
+                    child: Emoji(
+                      // the state of the emoji when its waiting around (the transpart container)
+                      emoji: score[emoji] == true? '✔️': emoji,), // if the dargging is true
+                    feedback: Emoji(emoji: emoji), //what appears while dragging 
+                    childWhenDragging: Emoji(emoji: ''), // what remains behind
+                  );
+                }).toList()),
+          ), 
+          Container(padding: const EdgeInsets.all(15),
+            child: Column(
+              //colors
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: choices.keys.map((emoji) // the selected emoji
-                  {
-                return Draggable<String>(
-                  data: emoji,
-                  child: Emoji(
-                    // the state of the emoji when its waiting around (the transpart container)
-                    emoji: score[emoji] == true
-                        ? '✔️'
-                        : emoji, // if the dargging is true
-                  ),
-                  feedback: Emoji(emoji: emoji), //what appears while dragging 
-                  childWhenDragging: Emoji(emoji: ''), // what remains behind
-                );
-              }).toList()), // why to list??
-          Column(
-            //colors
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children:
-                choices.keys.map((emoji) => _buildDragTarget(emoji)).toList()
-                  ..shuffle(Random(counter)), 
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children:
+                  choices.keys.map((emoji) => _buildDragTarget(emoji)).toList()
+                    ..shuffle(Random(counter)), 
+            ),
           )
         ],
       ),
@@ -93,7 +96,11 @@ class MatchingGameState extends State<MatchingGame> {
         if (score[emoji] == true) {
           return Text("");
         } else {
-          return  Container( height: 80, width: 200,child: Text(thecolors[choices[emoji]],style:TextStyle(color: choices[emoji])),); 
+          return  Container(height:80,width: 200,
+          child:Text(thecolors[choices[emoji]],//red(color.red)
+          style:TextStyle(color: choices[emoji],fontSize: 50)
+          ),
+          ); 
         }
       },
       onWillAccept: (data) => data == emoji, //test if it accecpted oe not
