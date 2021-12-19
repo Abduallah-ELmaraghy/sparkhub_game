@@ -18,12 +18,25 @@ class MatchingGameState extends State<MatchingGame> {
     '💜': Colors.purple,
   };
 
-  int counter = 0; // for the score
+     final Map thecolors = {
+    Colors.red: 'Red',
+    Colors.green: 'Green',
+    Colors.blue: 'Blue',
+    Colors.yellow: 'Yellow',
+    Colors.orange: 'Orange',
+    Colors.purple: 'Purple',
+  };
+
+  int counter = 0; 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
+   return Scaffold(
+     backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Text('Score ${score.length} / 6'),
+        backgroundColor: Colors.grey,
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.refresh),
         onPressed: () {
@@ -34,7 +47,7 @@ class MatchingGameState extends State<MatchingGame> {
         },
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.cyan,
+        color: Colors.grey,
         child: Container(
           height: 50.0,
         ),
@@ -42,8 +55,7 @@ class MatchingGameState extends State<MatchingGame> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       body: Row(
         // all the app in row
-        mainAxisAlignment: MainAxisAlignment
-            .spaceAround, // Place the free space evenly between the children widget and page
+        mainAxisAlignment: MainAxisAlignment.spaceAround, // Place the free space evenly between the children widget and page
         children: [
           Column(
               // emojis
@@ -65,10 +77,9 @@ class MatchingGameState extends State<MatchingGame> {
           Column(
             //colors
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            //crossAxisAlignment: CrossAxisAlignment.start,
             children:
                 choices.keys.map((emoji) => _buildDragTarget(emoji)).toList()
-                  ..shuffle(Random(counter)), //?
+                  ..shuffle(Random(counter)), 
           )
         ],
       ),
@@ -77,18 +88,12 @@ class MatchingGameState extends State<MatchingGame> {
 
   Widget _buildDragTarget(emoji) {
     return DragTarget<String>(
-      builder: (context, incoming, rejected) //?
+      builder: (context, incoming, rejected) 
           {
         if (score[emoji] == true) {
-          return Container(
-            color: Colors.white,
-            child: const Text('Correct!!'),
-            alignment: Alignment.center,
-            height: 80,
-            width: 200,
-          );
+          return Text("");
         } else {
-          return Container(color: choices[emoji], height: 80, width: 200); //?
+          return  Container( height: 80, width: 200,child: Text(thecolors[choices[emoji]],style:TextStyle(color: choices[emoji])),); 
         }
       },
       onWillAccept: (data) => data == emoji, //test if it accecpted oe not
