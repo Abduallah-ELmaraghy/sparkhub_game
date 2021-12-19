@@ -6,7 +6,7 @@ import 'package:sparkhub_game/screens/login.dart';
 import 'package:sparkhub_game/screens/matching_game.dart';
 import 'package:sparkhub_game/screens/memory_game_home_screen.dart';
 import 'package:sparkhub_game/screens/memory_game_levels_screen.dart';
-
+import 'package:sparkhub_game/screens/wcscreens/HomePage.dart';
 //import 'screens/levels_screen.dart';
 //import 'screens/memory_game_home_screen.dart';
 
@@ -30,6 +30,8 @@ class MyApp extends StatelessWidget {
         '/match': (context) => MatchingGame(),
         '/MemoryGameLevelsPage': (context) => const LevelsPage(),
         '/memoeryGameHomeScreen': (context) => const MemoryGameHomeScreen(),
+        '/wchome': (context) => HomePage(),
+      
       },
       home: AnimatedSplashScreen(
         duration: 1500,
@@ -39,6 +41,8 @@ class MyApp extends StatelessWidget {
         nextScreen: const MyHomePage(
           title: '',
         ),
+        //nextScreen:  HomePage(),
+        
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
         backgroundColor: const Color(0xff101324),
