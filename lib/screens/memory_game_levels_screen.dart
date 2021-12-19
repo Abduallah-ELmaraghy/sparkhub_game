@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter/rendering.dart';
-import '../models/levels.dart';
-import '../models/card_model.dart';
+import '../models/memory_game_levels_model.dart';
+import '../models/memory_game_card_model.dart';
 //import 'memory_game_homescreen.dart';
 
 Details deatail = Details();
 //MemoryGameHomeScreen home = MemoryGameHomeScreen();
 
 class LevelsPage extends StatefulWidget {
+  const LevelsPage({Key? key}) : super(key: key);
+
   @override
   LevelsPageState createState() => LevelsPageState();
 }
@@ -20,7 +22,7 @@ class LevelsPageState extends State<LevelsPage> {
         appBar: AppBar(
           backgroundColor: Colors.blueGrey,
           centerTitle: true,
-          title: Text("Memory game"),
+          title: const Text("Memory game"),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -29,7 +31,7 @@ class LevelsPageState extends State<LevelsPage> {
             Container(
                 height: 200,
                 width: 400,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
                     Radius.circular(20),
                   ),
@@ -45,7 +47,7 @@ class LevelsPageState extends State<LevelsPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'EASY',
                         style: TextStyle(
                             fontFamily: "Font1",
@@ -69,7 +71,7 @@ class LevelsPageState extends State<LevelsPage> {
             Container(
               height: 200,
               width: 400,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
                 ),
@@ -85,7 +87,7 @@ class LevelsPageState extends State<LevelsPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'MEDIUM',
                       style: TextStyle(
                           fontFamily: "Font1",
@@ -110,7 +112,7 @@ class LevelsPageState extends State<LevelsPage> {
             Container(
               height: 200,
               width: 400,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
                 ),
@@ -126,7 +128,7 @@ class LevelsPageState extends State<LevelsPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Hard',
                         style: TextStyle(
                             fontFamily: "Font1",
@@ -213,7 +215,7 @@ int scoreLevel() {
 List<CardModel> getPairs() {
   List<CardModel> pairs = <CardModel>[];
 
-  CardModel cardModel = new CardModel();
+  CardModel cardModel = CardModel();
 
   if (deatail.getSelctedLevel() == 2) {
     for (int i = 0; i < sourceArray.length; i++) {
@@ -221,7 +223,7 @@ List<CardModel> getPairs() {
       cardModel.setIsSelected(false);
       pairs.add(cardModel);
       pairs.add(cardModel);
-      cardModel = new CardModel();
+      cardModel = CardModel();
     }
   } else if (deatail.getSelctedLevel() == 1) {
     for (int i = 0; i < 12; i++) {
@@ -229,7 +231,7 @@ List<CardModel> getPairs() {
       cardModel.setIsSelected(false);
       pairs.add(cardModel);
       pairs.add(cardModel);
-      cardModel = new CardModel();
+      cardModel = CardModel();
     }
   } else if (deatail.getSelctedLevel() == 0) {
     for (int i = 0; i < 8; i++) {
@@ -237,7 +239,7 @@ List<CardModel> getPairs() {
       cardModel.setIsSelected(false);
       pairs.add(cardModel);
       pairs.add(cardModel);
-      cardModel = new CardModel();
+      cardModel = CardModel();
     }
   }
 
@@ -247,7 +249,7 @@ List<CardModel> getPairs() {
 List<CardModel> getQuestionPairs() {
   List<CardModel> pairs = <CardModel>[];
 
-  CardModel cardModel = new CardModel();
+  CardModel cardModel = CardModel();
   //Level level;
 
   // Details details = Details();
@@ -258,7 +260,7 @@ List<CardModel> getQuestionPairs() {
       cardModel.setIsSelected(false);
       pairs.add(cardModel);
       pairs.add(cardModel);
-      cardModel = new CardModel();
+      cardModel = CardModel();
     }
   } else if (deatail.getSelctedLevel() == 1) {
     for (int i = 0; i < 12; i++) {
@@ -266,7 +268,7 @@ List<CardModel> getQuestionPairs() {
       cardModel.setIsSelected(false);
       pairs.add(cardModel);
       pairs.add(cardModel);
-      cardModel = new CardModel();
+      cardModel = CardModel();
     }
   } else if (deatail.getSelctedLevel() == 0) {
     for (int i = 0; i < 8; i++) {
@@ -274,7 +276,7 @@ List<CardModel> getQuestionPairs() {
       cardModel.setIsSelected(false);
       pairs.add(cardModel);
       pairs.add(cardModel);
-      cardModel = new CardModel();
+      cardModel = CardModel();
     }
   }
 

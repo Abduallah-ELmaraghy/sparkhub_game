@@ -6,11 +6,11 @@ class Details {
   Details();
 
   void setSelectedlevel(int lev) {
-    this.level = lev;
+    level = lev;
   }
 
   int getSelctedLevel() {
-    return this.level;
+    return level;
   }
 
   List<Widget> genratestar(int no) {
@@ -18,7 +18,7 @@ class Details {
     for (int i = 0; i < no; i++) {
       _icons.insert(
           i,
-          Icon(
+          const Icon(
             Icons.star,
             color: Colors.yellow,
           ));

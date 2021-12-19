@@ -1,48 +1,48 @@
 import 'package:flutter/material.dart';
-import '../models/card_model.dart';
+import '../models/memory_game_card_model.dart';
 //import '../models/memory_game.dart';
 import 'memory_game_home_screen.dart';
-import '../screens/levels_screen.dart';
+import 'memory_game_levels_screen.dart';
 
-class Tile extends StatefulWidget {
+class CardScreen extends StatefulWidget {
   final String imagePathUrl;
-  final int tileIndex;
+  final int cardIndex;
   final MemoryGameHomeScreenState parent;
 
-  Tile(
+  const CardScreen(
       {required this.imagePathUrl,
-      required this.tileIndex,
+      required this.cardIndex,
       required this.parent});
 
   @override
-  _TileState createState() => _TileState();
+  _CardScreenState createState() => _CardScreenState();
 }
 
-class _TileState extends State<Tile> {
+class _CardScreenState extends State<CardScreen> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         if (!selected) {
           setState(() {
-            myPairs[widget.tileIndex].setIsSelected(true);
+            myPairs[widget.cardIndex].setIsSelected(true);
           });
           if (selectedTile != "") {
             /// testing if the selected tiles are same
-            if (selectedTile == myPairs[widget.tileIndex].getImageAssetPath()) {
+            if (selectedTile == myPairs[widget.cardIndex].getImageAssetPath()) {
               print("add point");
               points = points + 1;
               print(selectedTile + " thishis" + widget.imagePathUrl);
 
-              CardModel cardModel = new CardModel();
-              print(widget.tileIndex);
+              CardModel cardModel = CardModel();
+              print(widget.cardIndex);
               selected = true;
               Future.delayed(const Duration(seconds: 2), () {
                 cardModel.setImageAssetPath("");
-                myPairs[widget.tileIndex] = cardModel;
+                myPairs[widget.cardIndex] = cardModel;
                 print(selectedIndex);
                 myPairs[selectedIndex!] = cardModel;
-                this.widget.parent.setState(() {});
+                widget.parent.setState(() {});
                 setState(() {
                   selected = false;
                 });
@@ -51,14 +51,14 @@ class _TileState extends State<Tile> {
             } else {
               print(selectedTile +
                   " thishis " +
-                  myPairs[widget.tileIndex].getImageAssetPath());
+                  myPairs[widget.cardIndex].getImageAssetPath());
               print("wrong choice");
-              print(widget.tileIndex);
+              print(widget.cardIndex);
               print(selectedIndex);
               selected = true;
               Future.delayed(const Duration(seconds: 2), () {
-                this.widget.parent.setState(() {
-                  myPairs[widget.tileIndex].setIsSelected(false);
+                widget.parent.setState(() {
+                  myPairs[widget.cardIndex].setIsSelected(false);
                   myPairs[selectedIndex!].setIsSelected(false);
                 });
                 setState(() {
@@ -70,8 +70,8 @@ class _TileState extends State<Tile> {
             }
           } else {
             setState(() {
-              selectedTile = myPairs[widget.tileIndex].getImageAssetPath();
-              selectedIndex = widget.tileIndex;
+              selectedTile = myPairs[widget.cardIndex].getImageAssetPath();
+              selectedIndex = widget.cardIndex;
             });
 
             print(selectedTile);
@@ -80,14 +80,12 @@ class _TileState extends State<Tile> {
         }
       },
       child: Container(
-        margin: EdgeInsets.all(5),
-        child: myPairs[widget.tileIndex].getImageAssetPath() != ""
-            ? Image.asset(myPairs[widget.tileIndex].getIsSelected()!
-                ? myPairs[widget.tileIndex].getImageAssetPath()
+        margin: const EdgeInsets.all(5),
+        child: myPairs[widget.cardIndex].getImageAssetPath() != ""
+            ? Image.asset(myPairs[widget.cardIndex].getIsSelected()!
+                ? myPairs[widget.cardIndex].getImageAssetPath()
                 : widget.imagePathUrl)
-            : Container(
-                child: Image.asset("assets/MemoryGameImages/correct.png"),
-              ),
+            : Image.asset("assets/MemoryGameImages/correct.png"),
       ),
     );
   }

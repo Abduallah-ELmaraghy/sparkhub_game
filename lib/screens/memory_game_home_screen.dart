@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import '../models/card_model.dart';
+import '../models/memory_game_card_model.dart';
 //import '../models/memory_game.dart';
 import 'memory_game_card_screen.dart';
-import '../screens/levels_screen.dart';
+import 'memory_game_levels_screen.dart';
 
 class MemoryGameHomeScreen extends StatefulWidget {
   const MemoryGameHomeScreen({Key? key}) : super(key: key);
@@ -14,12 +14,13 @@ class MemoryGameHomeScreen extends StatefulWidget {
 }
 
 class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
-  List<CardModel> gridViewTiles = [];
+  List<CardModel> visiblecards = [];
   List<CardModel> questionPairs = <CardModel>[];
 
   @override
   void initState() {
     super.initState();
+
     reStart();
   }
 
@@ -32,14 +33,14 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
     myPairs = getPairs();
     myPairs.shuffle();
 
-    gridViewTiles = myPairs;
+    visiblecards = myPairs;
     Future.delayed(const Duration(seconds: 5), () {
 // Here you can write your code
       setState(() {
         print("2 seconds done");
         // Here you can write your code for open new view
         questionPairs = getQuestionPairs();
-        gridViewTiles = questionPairs;
+        visiblecards = questionPairs;
         selected = false;
       });
     });
@@ -51,12 +52,12 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
-        title: Text("Memory game"),
+        title: const Text("Memory game"),
       ),
       backgroundColor: Colors.blueGrey[200],
       body: ListView(children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
           child: Column(
             children: <Widget>[
               //SizedBox(
@@ -68,10 +69,10 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                       children: <Widget>[
                         Text(
                           "$points/${scoreLevel()}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w500),
                         ),
-                        Text(
+                        const Text(
                           "Score",
                           textAlign: TextAlign.start,
                           style: TextStyle(
@@ -88,28 +89,27 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                       shrinkWrap: true,
                       //physics: ClampingScrollPhysics(),
                       scrollDirection: Axis.vertical,
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                          mainAxisSpacing: 0.0, maxCrossAxisExtent: 100.0),
-                      children: List.generate(gridViewTiles.length, (index) {
-                        return Tile(
-                          imagePathUrl:
-                              gridViewTiles[index].getImageAssetPath(),
-                          tileIndex: index,
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                              mainAxisSpacing: 0.0, maxCrossAxisExtent: 100.0),
+                      children: List.generate(visiblecards.length, (index) {
+                        return CardScreen(
+                          imagePathUrl: visiblecards[index].getImageAssetPath(),
+                          cardIndex: index,
                           parent: this,
                         );
                       }),
                     )
-                  : Container(
-                      child: Column(
+                  : Column(
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'Congratulations, You won!',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 17,
                               fontWeight: FontWeight.w500),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         GestureDetector(
@@ -127,7 +127,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                               color: Colors.blue,
                               borderRadius: BorderRadius.circular(24),
                             ),
-                            child: Text(
+                            child: const Text(
                               "Replay",
                               style: TextStyle(
                                   color: Colors.white,
@@ -136,7 +136,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         GestureDetector(
@@ -152,7 +152,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                               border: Border.all(color: Colors.blue, width: 2),
                               borderRadius: BorderRadius.circular(24),
                             ),
-                            child: Text(
+                            child: const Text(
                               "Go back",
                               style: TextStyle(
                                   color: Colors.blue,
@@ -162,7 +162,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                           ),
                         ),
                       ],
-                    ))
+                    )
             ],
           ),
         ),

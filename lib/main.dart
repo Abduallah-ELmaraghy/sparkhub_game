@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sparkhub_game/screens/home.dart';
 
-import 'screens/levels_screen.dart';
+import 'screens/memory_game_levels_screen.dart';
 import 'screens/memory_game_home_screen.dart';
 
 void main() {
@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    /*return MaterialApp(initialRoute: '/MemoryGameLevelsPage', routes: {
-      '/MemoryGameLevelsPage': (context) => LevelsPage(),
-      '/memoeryGameHomeScreen': (context) => MemoryGameHomeScreen(),
+    /* return MaterialApp(initialRoute: '/MemoryGameLevelsPage', routes: {
+      '/MemoryGameLevelsPage': (context) => const LevelsPage(),
+      '/memoeryGameHomeScreen': (context) => const MemoryGameHomeScreen(),
     });*/
   }
 }
