@@ -35,11 +35,8 @@ class MyApp extends StatelessWidget {
         splash: Image.asset(
           "assets/logo.png",
         ),
-        nextScreen: const MyHomePage(
-          title: '',
-        ),
+        nextScreen: LoginScreen(),
         //nextScreen:  HomePage(),
-
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
         backgroundColor: const Color(0xff101324),

@@ -35,7 +35,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/wchome');
                     },
-                    child: const Text("Word Connect"),
+                    child: const Text("Word Connect",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF101324))),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(10.0),
                       primary: kButtonColor,
@@ -52,12 +56,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.pushNamed(context, '/match');
                     },
                     child: const Text("Matching",
-                        style: TextStyle(fontWeight: FontWeight.bold)),
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF101324))),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(10.0),
                       primary: kButtonColor,
-                      textStyle: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
                       minimumSize: const Size(210, 50),
                       maximumSize: const Size(210, 50),
                     )),
@@ -68,7 +73,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.pushNamed(context, '/MemoryGameLevelsPage');
                     },
-                    child: const Text("Remmember Places"),
+                    child: const Text("Remmember Places",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF101324))),
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(10.0),
                       primary: kButtonColor,

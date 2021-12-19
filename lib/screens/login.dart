@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:sparkhub_game/screens/home.dart';
 
-const users = const {
+const users = {
   'dribbble@gmail.com': '12345',
   'hunter@gmail.com': 'hunter',
 };
 
 class LoginScreen extends StatelessWidget {
-  Duration get loginTime => Duration(milliseconds: 2250);
+  const LoginScreen({Key? key}) : super(key: key);
+
+  Duration get loginTime => Duration(milliseconds: 1250);
 
   Future<String?> _authUser(LoginData data) {
     debugPrint('Name: ${data.name}, Password: ${data.password}');
     return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(data.name)) {
+      /*if (!users.containsKey(data.name)) {
         return 'User not exists';
       }
       if (users[data.name] != data.password) {
         return 'Password does not match';
-      }
+      }*/
       return null;
     });
   }
@@ -33,9 +35,9 @@ class LoginScreen extends StatelessWidget {
   Future<String> _recoverPassword(String name) {
     debugPrint('Name: $name');
     return Future.delayed(loginTime).then((_) {
-      if (!users.containsKey(name)) {
+      /*if (!users.containsKey(name)) {
         return 'User not exists';
-      }
+      }*/
       return "";
     });
   }
@@ -43,16 +45,12 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterLogin(
-      //title: 'ECORP',
-      logo: const AssetImage('assets/logo.png'),
+      title: 'SparkHub',
+      //logo: const AssetImage('assets/logo.png'),
       onLogin: _authUser,
       onSignup: _signupUser,
       onSubmitAnimationCompleted: () {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const MyHomePage(
-            title: '',
-          ),
-        ));
+        Navigator.pushNamed(context, '/home');
       },
       onRecoverPassword: _recoverPassword,
     );
