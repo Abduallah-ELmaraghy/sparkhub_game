@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/memoeryGameHomeScreen');
+                      Navigator.pushNamed(context, '/MemoryGameLevelsPage');
                     },
                     child: const Text("Remmember Places"),
                     style: ElevatedButton.styleFrom(

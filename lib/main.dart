@@ -7,8 +7,6 @@ import 'package:sparkhub_game/screens/matching_game.dart';
 import 'package:sparkhub_game/screens/memory_game_home_screen.dart';
 import 'package:sparkhub_game/screens/memory_game_levels_screen.dart';
 import 'package:sparkhub_game/screens/wcscreens/HomePage.dart';
-//import 'screens/levels_screen.dart';
-//import 'screens/memory_game_home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -48,10 +46,5 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
     );
-
-    /*return MaterialApp(initialRoute: '/MemoryGameLevelsPage', routes: {
-      '/MemoryGameLevelsPage': (context) => const LevelsPage(),
-      '/memoeryGameHomeScreen': (context) => const MemoryGameHomeScreen(),
-    });*/
   }
 }
