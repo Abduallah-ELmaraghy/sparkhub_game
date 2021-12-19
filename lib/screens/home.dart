@@ -22,43 +22,61 @@ class _MyHomePageState extends State<MyHomePage> {
               const Expanded(child: SizedBox()),
               gameName,
               Padding(
-                padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 90.0),
+                padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 50.0),
                 child: Image.asset(
                   "assets/logo.png",
-                  width: 120,
-                  height: 120,
+                  width: 80,
+                  height: 80,
                 ),
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(4),
-                child: Stack(
-                  children: <Widget>[
-                    Positioned.fill(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: kButtonColor,
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        //Navigator.pushNamed(context, '/');
-                      },
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.all(15.0),
-                        primary: kBackground,
-                        textStyle: const TextStyle(
-                            fontSize: 35, fontWeight: FontWeight.bold),
-                      ),
-                      child: const Text(
-                        "Start Game",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                    onPressed: () {
+                      // Navigator.pushNamed(context, '/match');
+                    },
+                    child: const Text("Word Connect"),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(10.0),
+                      primary: kButtonColor,
+                      textStyle: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                      minimumSize: const Size(210, 50),
+                      maximumSize: const Size(210, 50),
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/match');
+                    },
+                    child: const Text("Matching",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(10.0),
+                      primary: kButtonColor,
+                      textStyle: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                      minimumSize: const Size(210, 50),
+                      maximumSize: const Size(210, 50),
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/memoeryGameHomeScreen');
+                    },
+                    child: const Text("Remmember Places"),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(10.0),
+                      primary: kButtonColor,
+                      textStyle: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                      minimumSize: const Size(210, 50),
+                      maximumSize: const Size(210, 50),
+                    )),
               ),
               const Expanded(child: SizedBox()),
             ],

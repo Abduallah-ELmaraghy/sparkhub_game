@@ -2,7 +2,6 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sparkhub_game/screens/home.dart';
-import 'package:sparkhub_game/screens/homescreen.dart';
 import 'package:sparkhub_game/screens/login.dart';
 import 'package:sparkhub_game/screens/matching_game.dart';
 import 'package:sparkhub_game/screens/memory_game_home_screen.dart';
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       initialRoute: '/',
       routes: {
-        '/home': (context) => const MyHomeScreenPage(
+        '/home': (context) => const MyHomePage(
               title: '',
             ),
         '/match': (context) => MatchingGame(),
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
         splash: Image.asset(
           "assets/logo.png",
         ),
-        nextScreen: const MyHomeScreenPage(
+        nextScreen: const MyHomePage(
           title: '',
         ),
         splashTransition: SplashTransition.fadeTransition,
