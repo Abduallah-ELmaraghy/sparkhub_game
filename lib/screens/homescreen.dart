@@ -31,7 +31,7 @@ class _MyHomeScreenPageState extends State<MyHomeScreenPage> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    // Navigator.pushNamed(context, '/match');
+                   Navigator.pushNamed(context, '/wchome');
                   },
                   child: const Text("Word Connect")),
               ElevatedButton(
