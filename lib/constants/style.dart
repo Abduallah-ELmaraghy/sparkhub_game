@@ -14,9 +14,17 @@ var gameName = Text(
   'SparkHub',
   style: GoogleFonts.gugi(
     textStyle: const TextStyle(
-      fontSize: 35,
+      fontSize: 30,
       fontWeight: FontWeight.bold,
       color: Color.fromRGBO(255, 228, 81, 1),
     ),
+  ),
+);
+
+var gugifont = GoogleFonts.gugi(
+  textStyle: const TextStyle(
+    fontSize: 35,
+    fontWeight: FontWeight.bold,
+    color: Color.fromRGBO(255, 228, 81, 1),
   ),
 );
