@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                     onPressed: () {
-                      // Navigator.pushNamed(context, '/match');
+                      Navigator.pushNamed(context, '/wchome');
                     },
                     child: const Text("Word Connect"),
                     style: ElevatedButton.styleFrom(
