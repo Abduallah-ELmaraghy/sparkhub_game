@@ -16,38 +16,53 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: kBackground,
       body: SafeArea(
-        child: Column(
-          children: [
-            const Expanded(child: SizedBox()),
-            Padding(
-              padding: const EdgeInsets.all(28.0),
-              child: Image.asset(
-                "assets/logo.png",
-              ),
-            ),
-            InkWell(
-              child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width / 2,
-                decoration: BoxDecoration(
-                  color: kOrange,
-                  borderRadius: BorderRadius.circular(20),
+        child: Center(
+          child: Column(
+            children: [
+              const Expanded(child: SizedBox()),
+              gameName,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 90.0),
+                child: Image.asset(
+                  "assets/logo.png",
+                  width: 120,
+                  height: 120,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Start Game",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned.fill(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: kButtonColor,
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        //Navigator.pushNamed(context, '/');
+                      },
+                      style: TextButton.styleFrom(
+                        padding: const EdgeInsets.all(15.0),
+                        primary: kBackground,
+                        textStyle: const TextStyle(
+                            fontSize: 35, fontWeight: FontWeight.bold),
+                      ),
+                      child: const Text(
+                        "Start Game",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-            const Expanded(child: SizedBox()),
-          ],
+              const Expanded(child: SizedBox()),
+            ],
+          ),
         ),
       ),
     );
