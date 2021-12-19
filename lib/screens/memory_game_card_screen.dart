@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../models/memory_game_card_model.dart';
-//import '../models/memory_game.dart';
 import 'memory_game_home_screen.dart';
-import 'memory_game_levels_screen.dart';
+
+List<CardModel> myPairs = <CardModel>[];
 
 class CardScreen extends StatefulWidget {
   final String imagePathUrl;
@@ -23,59 +23,61 @@ class _CardScreenState extends State<CardScreen> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (!selected) {
+        if (!homeModel.selected) {
           setState(() {
             myPairs[widget.cardIndex].setIsSelected(true);
           });
-          if (selectedTile != "") {
-            /// testing if the selected tiles are same
-            if (selectedTile == myPairs[widget.cardIndex].getImageAssetPath()) {
+          if (homeModel.selectedCard != "") {
+            /// testing if the selected cards are same
+            if (homeModel.selectedCard ==
+                myPairs[widget.cardIndex].getImageAssetPath()) {
               print("add point");
-              points = points + 1;
-              print(selectedTile + " thishis" + widget.imagePathUrl);
+              homeModel.points = homeModel.points + 1;
+              print(homeModel.selectedCard + " thishis" + widget.imagePathUrl);
 
               CardModel cardModel = CardModel();
               print(widget.cardIndex);
-              selected = true;
+              homeModel.selected = true;
               Future.delayed(const Duration(seconds: 2), () {
                 cardModel.setImageAssetPath("");
                 myPairs[widget.cardIndex] = cardModel;
-                print(selectedIndex);
-                myPairs[selectedIndex!] = cardModel;
+                print(homeModel.selectedIndex);
+                myPairs[homeModel.selectedIndex!] = cardModel;
                 widget.parent.setState(() {});
                 setState(() {
-                  selected = false;
+                  homeModel.selected = false;
                 });
-                selectedTile = "";
+                homeModel.selectedCard = "";
               });
             } else {
-              print(selectedTile +
+              print(homeModel.selectedCard +
                   " thishis " +
                   myPairs[widget.cardIndex].getImageAssetPath());
               print("wrong choice");
               print(widget.cardIndex);
-              print(selectedIndex);
-              selected = true;
+              print(homeModel.selectedIndex);
+              homeModel.selected = true;
               Future.delayed(const Duration(seconds: 2), () {
                 widget.parent.setState(() {
                   myPairs[widget.cardIndex].setIsSelected(false);
-                  myPairs[selectedIndex!].setIsSelected(false);
+                  myPairs[homeModel.selectedIndex!].setIsSelected(false);
                 });
                 setState(() {
-                  selected = false;
+                  homeModel.selected = false;
                 });
               });
 
-              selectedTile = "";
+              homeModel.selectedCard = "";
             }
           } else {
             setState(() {
-              selectedTile = myPairs[widget.cardIndex].getImageAssetPath();
-              selectedIndex = widget.cardIndex;
+              homeModel.selectedCard =
+                  myPairs[widget.cardIndex].getImageAssetPath();
+              homeModel.selectedIndex = widget.cardIndex;
             });
 
-            print(selectedTile);
-            print(selectedIndex);
+            print(homeModel.selectedCard);
+            print(homeModel.selectedIndex);
           }
         }
       },

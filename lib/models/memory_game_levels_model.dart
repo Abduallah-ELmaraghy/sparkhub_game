@@ -25,4 +25,18 @@ class Details {
     }
     return _icons;
   }
+
+  int scoreLevel() {
+    int levelScore;
+    if (getSelctedLevel() == 2) {
+      levelScore = 18;
+    } else if (getSelctedLevel() == 1) {
+      levelScore = 12;
+    } else if (getSelctedLevel() == 0) {
+      levelScore = 8;
+    } else {
+      levelScore = 8;
+    }
+    return levelScore;
+  }
 }

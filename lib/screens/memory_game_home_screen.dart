@@ -1,10 +1,12 @@
-import 'dart:async';
+//import 'dart:async';
 
 import 'package:flutter/material.dart';
 import '../models/memory_game_card_model.dart';
-//import '../models/memory_game.dart';
 import 'memory_game_card_screen.dart';
 import 'memory_game_levels_screen.dart';
+import '../models/memory_game_home_screen_model.dart';
+
+MemoryGameHomePageModel homeModel = MemoryGameHomePageModel();
 
 class MemoryGameHomeScreen extends StatefulWidget {
   const MemoryGameHomeScreen({Key? key}) : super(key: key);
@@ -25,23 +27,22 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
   }
 
   MemoryGameHomeScreenState() {
-    points = 0;
+    homeModel.points = 0;
     reStart();
   }
 
   void reStart() {
-    myPairs = getPairs();
+    myPairs = homeModel.getPairs();
     myPairs.shuffle();
 
     visiblecards = myPairs;
     Future.delayed(const Duration(seconds: 5), () {
-// Here you can write your code
       setState(() {
         print("2 seconds done");
-        // Here you can write your code for open new view
-        questionPairs = getQuestionPairs();
+        // code for open new view
+        questionPairs = homeModel.getQuestionPairs();
         visiblecards = questionPairs;
-        selected = false;
+        homeModel.selected = false;
       });
     });
   }
@@ -63,12 +64,12 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
               //SizedBox(
               //height: 40,
               //),
-              points != scoreLevel()
+              homeModel.points != details.scoreLevel()
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "$points/${scoreLevel()}",
+                          "${homeModel.points}/${details.scoreLevel()}",
                           style: const TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w500),
                         ),
@@ -84,10 +85,9 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
               const SizedBox(
                 height: 20,
               ),
-              points != scoreLevel()
+              homeModel.points != details.scoreLevel()
                   ? GridView(
                       shrinkWrap: true,
-                      //physics: ClampingScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -115,7 +115,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              points = 0;
+                              homeModel.points = 0;
                               reStart();
                             });
                           },
@@ -124,7 +124,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                             width: 200,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.blueGrey,
                               borderRadius: BorderRadius.circular(24),
                             ),
                             child: const Text(
@@ -149,13 +149,14 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                             width: 200,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              border: Border.all(color: Colors.blue, width: 2),
+                              border:
+                                  Border.all(color: Colors.blueGrey, width: 2),
                               borderRadius: BorderRadius.circular(24),
                             ),
                             child: const Text(
                               "Go back",
                               style: TextStyle(
-                                  color: Colors.blue,
+                                  color: Colors.black,
                                   fontSize: 17,
                                   fontWeight: FontWeight.w500),
                             ),

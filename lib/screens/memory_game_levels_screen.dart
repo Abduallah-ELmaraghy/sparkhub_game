@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/rendering.dart';
 import '../models/memory_game_levels_model.dart';
-import '../models/memory_game_card_model.dart';
-//import 'memory_game_homescreen.dart';
 
-Details deatail = Details();
-//MemoryGameHomeScreen home = MemoryGameHomeScreen();
+Details details = Details();
 
 class LevelsPage extends StatefulWidget {
   const LevelsPage({Key? key}) : super(key: key);
@@ -39,7 +35,7 @@ class LevelsPageState extends State<LevelsPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      deatail.setSelectedlevel(0);
+                      details.setSelectedlevel(0);
                       Navigator.pushNamed(context, "/memoeryGameHomeScreen");
                     });
                   },
@@ -57,7 +53,7 @@ class LevelsPageState extends State<LevelsPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: deatail.genratestar(1),
+                        children: details.genratestar(1),
                       ),
                     ],
                   ),
@@ -79,7 +75,7 @@ class LevelsPageState extends State<LevelsPage> {
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    deatail.setSelectedlevel(1);
+                    details.setSelectedlevel(1);
                     Navigator.pushNamed(context, "/memoeryGameHomeScreen");
                   });
                 },
@@ -97,7 +93,7 @@ class LevelsPageState extends State<LevelsPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: deatail.genratestar(2),
+                      children: details.genratestar(2),
                     ),
                   ],
                 ),
@@ -120,7 +116,7 @@ class LevelsPageState extends State<LevelsPage> {
               child: ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      deatail.setSelectedlevel(2);
+                      details.setSelectedlevel(2);
                       Navigator.pushNamed(context, "/memoeryGameHomeScreen");
                     });
                   },
@@ -138,7 +134,7 @@ class LevelsPageState extends State<LevelsPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: deatail.genratestar(3),
+                        children: details.genratestar(3),
                       ),
                     ],
                   ),
@@ -152,133 +148,4 @@ class LevelsPageState extends State<LevelsPage> {
           ],
         ));
   }
-}
-
-String selectedTile = "";
-int? selectedIndex;
-bool selected = true;
-int points = 0;
-
-List<CardModel> myPairs = <CardModel>[];
-List<bool> clicked = <bool>[];
-
-List<bool> getClicked() {
-  List<bool> yoClicked = <bool>[];
-  List<CardModel> myairs = <CardModel>[];
-  myairs = getPairs();
-  for (int i = 0; i < myairs.length; i++) {
-    yoClicked[i] = false;
-  }
-
-  return yoClicked;
-}
-
-List<String> fillSourceArray() {
-  return [
-    'assets/MemoryGameImages/fox.png',
-    'assets/MemoryGameImages/hippo.png',
-    'assets/MemoryGameImages/horse.png',
-    'assets/MemoryGameImages/monkey.png',
-    'assets/MemoryGameImages/panda.png',
-    'assets/MemoryGameImages/parrot.png',
-    'assets/MemoryGameImages/rabbit.png',
-    'assets/MemoryGameImages/zoo.png',
-    'assets/MemoryGameImages/dino.png',
-    'assets/MemoryGameImages/fish.png',
-    'assets/MemoryGameImages/frog.png',
-    'assets/MemoryGameImages/girraf.png',
-    'assets/MemoryGameImages/octo.png',
-    'assets/MemoryGameImages/wolf.png',
-    'assets/MemoryGameImages/whale.png',
-    'assets/MemoryGameImages/shark.png',
-    'assets/MemoryGameImages/seahorse.png',
-    'assets/MemoryGameImages/peacock.png',
-  ];
-}
-
-List sourceArray = fillSourceArray();
-
-int scoreLevel() {
-  int levelScore;
-  if (deatail.getSelctedLevel() == 2) {
-    levelScore = 18;
-  } else if (deatail.getSelctedLevel() == 1) {
-    levelScore = 12;
-  } else if (deatail.getSelctedLevel() == 0) {
-    levelScore = 8;
-  } else {
-    levelScore = 8;
-  }
-  return levelScore;
-}
-
-List<CardModel> getPairs() {
-  List<CardModel> pairs = <CardModel>[];
-
-  CardModel cardModel = CardModel();
-
-  if (deatail.getSelctedLevel() == 2) {
-    for (int i = 0; i < sourceArray.length; i++) {
-      cardModel.setImageAssetPath("${sourceArray[i]}");
-      cardModel.setIsSelected(false);
-      pairs.add(cardModel);
-      pairs.add(cardModel);
-      cardModel = CardModel();
-    }
-  } else if (deatail.getSelctedLevel() == 1) {
-    for (int i = 0; i < 12; i++) {
-      cardModel.setImageAssetPath("${sourceArray[i]}");
-      cardModel.setIsSelected(false);
-      pairs.add(cardModel);
-      pairs.add(cardModel);
-      cardModel = CardModel();
-    }
-  } else if (deatail.getSelctedLevel() == 0) {
-    for (int i = 0; i < 8; i++) {
-      cardModel.setImageAssetPath("${sourceArray[i]}");
-      cardModel.setIsSelected(false);
-      pairs.add(cardModel);
-      pairs.add(cardModel);
-      cardModel = CardModel();
-    }
-  }
-
-  return pairs;
-}
-
-List<CardModel> getQuestionPairs() {
-  List<CardModel> pairs = <CardModel>[];
-
-  CardModel cardModel = CardModel();
-  //Level level;
-
-  // Details details = Details();
-
-  if (deatail.getSelctedLevel() == 2) {
-    for (int i = 0; i < sourceArray.length; i++) {
-      cardModel.setImageAssetPath("assets/MemoryGameImages/question.png");
-      cardModel.setIsSelected(false);
-      pairs.add(cardModel);
-      pairs.add(cardModel);
-      cardModel = CardModel();
-    }
-  } else if (deatail.getSelctedLevel() == 1) {
-    for (int i = 0; i < 12; i++) {
-      cardModel.setImageAssetPath("assets/MemoryGameImages/question.png");
-      cardModel.setIsSelected(false);
-      pairs.add(cardModel);
-      pairs.add(cardModel);
-      cardModel = CardModel();
-    }
-  } else if (deatail.getSelctedLevel() == 0) {
-    for (int i = 0; i < 8; i++) {
-      cardModel.setImageAssetPath("assets/MemoryGameImages/question.png");
-      cardModel.setIsSelected(false);
-      pairs.add(cardModel);
-      pairs.add(cardModel);
-      cardModel = CardModel();
-    }
-  }
-
-  return pairs;
 }
