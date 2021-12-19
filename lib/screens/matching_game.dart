@@ -23,10 +23,7 @@ class MatchingGameState extends State<MatchingGame> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Score ${score.length} / 6'),
-        backgroundColor: Colors.cyan,
-      ),
+      
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.refresh),
         onPressed: () {
@@ -61,7 +58,7 @@ class MatchingGameState extends State<MatchingGame> {
                         ? '✔️'
                         : emoji, // if the dargging is true
                   ),
-                  feedback: Emoji(emoji: emoji), //makes the emoji on the mouse
+                  feedback: Emoji(emoji: emoji), //what appears while dragging 
                   childWhenDragging: Emoji(emoji: ''), // what remains behind
                 );
               }).toList()), // why to list??
