@@ -20,3 +20,11 @@ var gameName = Text(
     ),
   ),
 );
+
+var gugifont = GoogleFonts.gugi(
+  textStyle: const TextStyle(
+    fontSize: 35,
+    fontWeight: FontWeight.bold,
+    color: Color.fromRGBO(255, 228, 81, 1),
+  ),
+);
