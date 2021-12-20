@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:sparkhub_game/constants/style.dart';
 import 'package:sparkhub_game/screens/home.dart';
 import 'package:sparkhub_game/screens/login.dart';
 import 'package:sparkhub_game/screens/matching_game.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         //nextScreen:  HomePage(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
-        backgroundColor: const Color(0xff101324),
+        backgroundColor: kBackground,
       ),
       debugShowCheckedModeBanner: false,
     );
