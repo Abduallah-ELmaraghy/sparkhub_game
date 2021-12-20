@@ -1,10 +1,9 @@
-//import 'dart:async';
-
 import 'package:flutter/material.dart';
 import '../models/memory_game_card_model.dart';
 import 'memory_game_card_screen.dart';
 import 'memory_game_levels_screen.dart';
 import '../models/memory_game_home_screen_model.dart';
+import '../constants/style.dart';
 
 MemoryGameHomePageModel homeModel = MemoryGameHomePageModel();
 
@@ -23,7 +22,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
   void initState() {
     super.initState();
 
-    reStart();
+    //reStart();
   }
 
   MemoryGameHomeScreenState() {

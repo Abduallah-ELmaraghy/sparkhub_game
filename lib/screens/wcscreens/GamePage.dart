@@ -161,7 +161,7 @@ class _GamePageState extends State<GamePage> {
                                     child: Text(
                                       "Play again!",
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
+                                          color: Colors.white, fontSize: 10),
                                     ),
                                     onPressed: () {
                                       map = generateMap(getAllCoords(level));
@@ -178,7 +178,7 @@ class _GamePageState extends State<GamePage> {
                                     child: Text(
                                       "Next Level",
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
+                                          color: Colors.white, fontSize: 10),
                                     ),
                                     onPressed: () {
                                       level++;

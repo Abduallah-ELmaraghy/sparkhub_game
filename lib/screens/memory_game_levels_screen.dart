@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/memory_game_levels_model.dart';
+import '../constants/style.dart';
 
 Details details = Details();
 
