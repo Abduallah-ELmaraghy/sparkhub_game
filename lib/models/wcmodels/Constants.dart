@@ -156,7 +156,7 @@ List<LetterWidget> generateMap(List<int> coords) {
     LetterWidget _newWidget =new LetterWidget(text: "",);
     for (int j = 0; j < coords.length; j++) {
       if (i == coords[j]) {
-        _newWidget = LetterWidget(text: "", color: Color(0xff393e46));
+        _newWidget = LetterWidget(text: "", color: Color(0xff000000));
         j = coords.length - 1;
       } else {
         _newWidget = LetterWidget(text: "", color: Color(0xffeeeeee));

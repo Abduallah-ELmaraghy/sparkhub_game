@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               SizedBox(
-                          height: 15,
+                          height: 35,
                         ),
                 GestureDetector(
                     onTap: () {

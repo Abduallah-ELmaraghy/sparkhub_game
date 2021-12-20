@@ -42,8 +42,9 @@ class _MenuBarState extends State<MenuBar>{
                             color: Color(0xffeeeeee))),
                   ],
                 ),
-                color: Color(0xff393e46),
+                color: Color(0xff000000),
               ),
+            
             );
 }
 }

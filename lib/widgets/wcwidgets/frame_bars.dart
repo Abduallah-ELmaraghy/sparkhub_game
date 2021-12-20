@@ -20,7 +20,7 @@ class _FrameBarState extends State<FrameBar>{
   bool _showTimer = true;
   int _seconds = 180;
   Duration animationTime = new Duration(seconds: 2);
-  Color bottomBarColor = Color(0xffcc0000);
+  Color bottomBarColor = Color(0xff00adb5);
   Color topBarColor = Color(0xff00adb5);
   Color mainBarColor = Color(0xff00adb5);
   Color tempColor = Color(0xff00adb5);
