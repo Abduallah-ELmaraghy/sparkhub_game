@@ -23,17 +23,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff222831),
+      backgroundColor: Color(0xff000000),
       body: SafeArea(
         child: Column(children: <Widget>[
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Center(
               child: Text(
                 "Word Count",
                 style: TextStyle(
                     fontWeight: FontWeight.w800,
-                    fontSize: 50,
+                    fontSize: 40,
                     color: Color(0xffeeeeee)),
               ),
             ),
@@ -58,22 +58,25 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         child: Container(
-                          width: 100.0,
-                          height: 50.0,
+                          width: 250.0,
+                          height: 60.0,
                           child: Center(
                             child: IconWidget(
                               icons: Icons.play_circle_filled,
                               text: "Play",
-                              size: 40,
+                              size:50,
                             ),
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Color(0xff222831),
+                            color: Color(0xffdccb00),
                           ),
                         )),
                   ],
                 ),
+              SizedBox(
+                          height: 15,
+                        ),
                 GestureDetector(
                     onTap: () {
                       setState(() {
@@ -84,18 +87,19 @@ class _HomePageState extends State<HomePage> {
                       });
                     },
                     child: Container(
-                      width: 100.0,
-                      height: 100.0,
+                      width: 250.0,
+                      height: 60.0,
                       child: Center(
                         child: IconWidget(
                           icons: FontAwesomeIcons.map,
                           text: "Levels",
-                          size: 25,
+                          size: 30,
+                        
                         ),
                       ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color(0xff222831),
+                        color: Color(0xff6fa8dc),
                       ),
                     )),
                 
