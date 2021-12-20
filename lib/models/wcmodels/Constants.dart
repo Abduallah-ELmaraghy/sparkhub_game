@@ -119,7 +119,7 @@ void disableAllColors() {
 List<String> letters = <String>[];
 List<int> indexes = <int>[];
 List<int> activeIndexes = <int>[];
-
+// el function de bet get coordinates le kol letter widget 3ashan makano fel screen
 List<int> getAllCoords(int level) {
   checkLevel();
   List<int> coords = <int>[];
@@ -148,7 +148,7 @@ List<int> convertList(String word, int level) {
   }
   return coords;
 }
-
+// btakhod el list malyana bel coordinates bta3t el letter widgets mn generatallcoords w tebda2 t7otoha fe mak
 List<LetterWidget> generateMap(List<int> coords) {
   List<LetterWidget> map = <LetterWidget>[];
 
