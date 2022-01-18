@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sparkhub_game/models/wcmodels/Constants.dart';
+import 'package:sparkhub_game/models/wcmodels/constants.dart';
 
 class HighScorePage extends StatefulWidget {
   @override

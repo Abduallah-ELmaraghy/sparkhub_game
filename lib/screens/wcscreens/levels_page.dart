@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sparkhub_game/models/wcmodels/Constants.dart';
-import 'package:sparkhub_game/screens/wcscreens/GamePage.dart';
+import 'package:sparkhub_game/models/wcmodels/constants.dart';
+import 'package:sparkhub_game/screens/wcscreens/game_page.dart';
 
 class LevelsPage extends StatefulWidget {
+  const LevelsPage({Key? key}) : super(key: key);
+
   @override
   _LevelsPageState createState() => _LevelsPageState();
 }
@@ -50,9 +52,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '1',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '1',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -69,9 +71,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '2',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '2',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -89,9 +91,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '3',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '3',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -109,9 +111,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '4',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '4',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -129,9 +131,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '5',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '5',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
 
@@ -151,9 +153,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '6',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '6',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
 
@@ -172,9 +174,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '7',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '7',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -192,9 +194,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '8',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '8',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -212,9 +214,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '9',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '9',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -232,9 +234,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '10',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '10',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
 
@@ -254,9 +256,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '11',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '11',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -274,9 +276,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '12',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '12',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -295,9 +297,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '13',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '13',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -317,9 +319,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '14',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '14',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
               GestureDetector(
@@ -339,9 +341,9 @@ class _LevelsPageState extends State<LevelsPage> {
                   height: 50,
                   child: const Center(
                       child: Text(
-                        '15',
-                        style: TextStyle(fontSize: 30),
-                      )),
+                    '15',
+                    style: TextStyle(fontSize: 30),
+                  )),
                 ),
               ),
             ],
