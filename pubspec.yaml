@@ -49,6 +49,8 @@ dependencies:
   timer_count_down: ^2.2.1
   flutter_tts: ^3.2.2
   assets_audio_player: ^3.0.3+6
+  firebase_core: ^1.11.0
+
   
 dev_dependencies:
   flutter_test:
