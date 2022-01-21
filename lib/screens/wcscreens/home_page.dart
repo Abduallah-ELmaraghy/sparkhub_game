@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sparkhub_game/models/wcmodels/Constants.dart';
-import 'package:sparkhub_game/widgets/wcwidgets/IconWidget.dart';
-import 'package:sparkhub_game/screens/wcscreens/GamePage.dart';
-import 'package:sparkhub_game/screens/wcscreens/LevelsPage.dart';
+import 'package:sparkhub_game/models/wcmodels/constants.dart';
+import 'package:sparkhub_game/widgets/wcwidgets/icon_widget.dart';
+import 'package:sparkhub_game/screens/wcscreens/game_page.dart';
+import 'package:sparkhub_game/screens/wcscreens/levels_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -47,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           level = 1;
                           setState(() {
                             map = generateMap(getAllCoords(1));
@@ -64,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                             child: IconWidget(
                               icons: Icons.play_circle_filled,
                               text: "Play",
-                              size:50,
+                              size: 50,
                             ),
                           ),
                           decoration: BoxDecoration(
@@ -74,9 +76,9 @@ class _HomePageState extends State<HomePage> {
                         )),
                   ],
                 ),
-              SizedBox(
-                          height: 35,
-                        ),
+                SizedBox(
+                  height: 35,
+                ),
                 GestureDetector(
                     onTap: () {
                       setState(() {
@@ -94,7 +96,6 @@ class _HomePageState extends State<HomePage> {
                           icons: FontAwesomeIcons.map,
                           text: "Levels",
                           size: 30,
-                        
                         ),
                       ),
                       decoration: BoxDecoration(
@@ -102,11 +103,9 @@ class _HomePageState extends State<HomePage> {
                         color: Color(0xff6fa8dc),
                       ),
                     )),
-                
               ],
             ),
           ),
-         
         ]),
       ),
     );

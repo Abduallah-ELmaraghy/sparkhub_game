@@ -1,10 +1,8 @@
-// ignore: file_names
 import 'dart:math';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:sparkhub_game/widgets/wcwidgets/LetterWidget.dart';
-import 'package:sparkhub_game/models/wcmodels/LevelMaps.dart';
+import 'package:sparkhub_game/widgets/wcwidgets/letter_widget.dart';
+import 'package:sparkhub_game/models/wcmodels/level_maps.dart';
 
 int highScoreLevel1 = 1;
 int highScoreLevel2 = 1;
@@ -42,7 +40,7 @@ String letter5 = "";
 const Color disabledColor = Colors.white;
 const Color activatedColor = Color(0xff00adb5);
 
-List<String> wroteBefore =<String>[];
+List<String> wroteBefore = <String>[];
 List<LetterWidget> map = generateMap(getAllCoords(level));
 Map<String, String>? wordMap;
 int barColour = 0; // 1yesil 2 kirmizi
@@ -135,7 +133,7 @@ List<int> getAllCoords(int level) {
 
 List<int> convertList(String word, int level) {
   checkLevel();
-  List<String> coords_string =<String>[];
+  List<String> coords_string = <String>[];
   List<int> coords = <int>[];
   for (int i = 0; i < wordMap!.length; i++) {
     if (wordMap![word] != null) {
@@ -148,12 +146,15 @@ List<int> convertList(String word, int level) {
   }
   return coords;
 }
+
 // btakhod el list malyana bel coordinates bta3t el letter widgets mn generatallcoords w tebda2 t7otoha fe mak
 List<LetterWidget> generateMap(List<int> coords) {
   List<LetterWidget> map = <LetterWidget>[];
 
   for (int i = 0; i < 36; i++) {
-    LetterWidget _newWidget =new LetterWidget(text: "",);
+    LetterWidget _newWidget = new LetterWidget(
+      text: "",
+    );
     for (int j = 0; j < coords.length; j++) {
       if (i == coords[j]) {
         _newWidget = LetterWidget(text: "", color: Color(0xff000000));

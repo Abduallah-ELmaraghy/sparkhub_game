@@ -1,11 +1,10 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sparkhub_game/widgets/wcwidgets/Menubar.dart';
+import 'package:sparkhub_game/widgets/wcwidgets/menu_bar.dart';
 import 'package:sparkhub_game/widgets/wcwidgets/frame_bars.dart';
-import 'package:sparkhub_game/widgets/wcwidgets/mainButtons.dart';
+import 'package:sparkhub_game/widgets/wcwidgets/main_buttons.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:sparkhub_game/models/wcmodels/Constants.dart';
+import 'package:sparkhub_game/models/wcmodels/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GamePage extends StatefulWidget {
@@ -38,8 +37,8 @@ class _GamePageState extends State<GamePage> {
           children: <Widget>[
             MenuBar(),
             // El bar el labany
-           FrameBar(),
-            
+            FrameBar(),
+
             Expanded(
               flex: 3,
               child: Container(

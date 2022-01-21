@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "695298880848",
+    "project_id": "sparkhub-78993",
+    "storage_bucket": "sparkhub-78993.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695298880848:android:01a83cb75a4394fd926855",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695298880848-me0ppcc7mh1g6993hc0kkehic535sbsl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhZyNtNq8iNdHVECRJu1dCBIEQi3oWzpM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695298880848-me0ppcc7mh1g6993hc0kkehic535sbsl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
