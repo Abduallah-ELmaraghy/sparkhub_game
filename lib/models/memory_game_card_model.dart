@@ -2,7 +2,7 @@ class CardModel {
   String imageAssetPath = "";
   bool isSelected = false;
   CardModel();
-
+//
   void setImageAssetPath(String getImageAssetPath) {
     imageAssetPath = getImageAssetPath;
   }
