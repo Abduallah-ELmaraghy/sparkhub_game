@@ -4,6 +4,11 @@ Map<String, String> wordsMap1 = {
   "YEM": "3,4,5",
 };
 List<String> mapLetter1 = ['Y', 'E', 'M', 'E', 'K'];
+
+var x = mapLetter1.toString();
+
+// user.add('id':id,'letter':x);
+
 Map<String, String> wordsMap2 = {
   "FOSIL": "3,9,15,21,27",
   "OFIS": "12,13,14,15",
