@@ -91,6 +91,8 @@ class CardList extends StatelessWidget {
                     print("HELLO DELETED");
                     Provider.of<NotesProvider>(context, listen: false)
                         .removeNotes(index);
+                    //Provider.of<NotesProvider>(context, listen: false)
+                    //  .removeNotes2(index);
                   }),
             )));
   }

@@ -26,7 +26,8 @@ class NotesProvider extends ChangeNotifier {
 
     // Call the user's CollectionReference to add a new user
     return users
-        .add({
+        .doc((_notes.length - 1).toString())
+        .set({
           'level': title, // John Doe
           'levelScore': descriptions, // Stokes and Sons
         })
@@ -46,20 +47,19 @@ class NotesProvider extends ChangeNotifier {
   // function to remove or delete notes by using list index position
   //CollectionReference users = FirebaseFirestore.instance.collection('admin_memory_game');
 
-  Future<void> removeNotes(int index) {
+  Future<void> removeNotes(int index) async {
     CollectionReference users =
         FirebaseFirestore.instance.collection('admin_memory_game');
-    _notes.removeAt(index);
-    notifyListeners();
+    //_notes.removeAt(index);
+    //notifyListeners();
     return users
-        .doc("nGZpDZ4lJkIcLeVCp9R3")
+        .doc((index).toString())
         .delete()
         .then((value) => print("User Deleted"))
         .catchError((error) => print("Failed to delete user: $error"));
   }
 
-  /*void removeNotes(int index) {
-
+  /* Future<void> removeNotes2(int index) async {
     _notes.removeAt(index);
     notifyListeners();
   }*/
