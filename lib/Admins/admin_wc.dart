@@ -93,8 +93,19 @@ class _AdminWcState extends State<AdminWc> {
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
                         printasdlast();
-                        Provider.of<WordConnect>(context, listen: false)
-                            .addMapLetterController(MapLetterController.text);
+                        List<Map<String, String>> wordsMap = [
+    {
+      WordMapController1.text:WordMapController2.text,
+      WordMapController3.text:WordMapController4.text,
+      WordMapController5.text:WordMapController6.text ,
+    }
+  ];
+                        
+                        //Provider.of<WordConnect>(context, listen: false)
+                         //   .addMapLetterController(MapLetterController.text);
+                          
+                            Provider.of<WordConnect>(context, listen: false)
+                            .addWordMapController(wordsMap,MapLetterController.text);
 
 //context.watch<WordConnect>().addWordmap(mycontroller.text);
 
