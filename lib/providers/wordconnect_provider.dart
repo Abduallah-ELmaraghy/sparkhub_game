@@ -5,7 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class WordConnect extends ChangeNotifier {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
- 
+//  String MapLetter;
+// List<Map<String, String>> wordsMap;
+// WordConnect(this.MapLetter,this.wordsMap);
 // List<Map<String, String>> wordsMap= [{
 // "YEMEK":"3,9,15,21,27",
 // "EMEK": "14,15,16,17",
@@ -14,8 +16,8 @@ class WordConnect extends ChangeNotifier {
 // List<String> get cart => MapLetter;
 // int get count => mapLetter1.length;
 
-  
-  Future<void> addMapLetterController(String item) {
+ 
+  Future<void> addWordMapController(List<Map<String,String>> item,String name) {
     // Call the user's CollectionReference to add a new user
     CollectionReference collection =
     FirebaseFirestore.instance.collection('word_connect');
@@ -23,6 +25,7 @@ class WordConnect extends ChangeNotifier {
     return collection
         .add({
           'Wordmap': item, // John Doe
+          'MapLetter':name, // John Doe
         })
         .then((value) => print("Recorded"))
         .catchError((error) => print("Failed to add record: $error"));
