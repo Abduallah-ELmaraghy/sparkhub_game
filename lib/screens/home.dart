@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sparkhub_game/constants/style.dart';
+
+import '../providers/notes_provider.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 

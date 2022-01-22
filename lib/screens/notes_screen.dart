@@ -4,8 +4,25 @@ import '../models/note.dart';
 import '../providers/notes_provider.dart';
 import 'package:provider/provider.dart';
 import '../constants/style.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class Home_Screen extends StatelessWidget {
+class Home_Screen extends StatefulWidget {
+  const Home_Screen({Key? key}) : super(key: key);
+
+  @override
+  Home_Screen_state createState() => Home_Screen_state();
+}
+
+class Home_Screen_state extends State<Home_Screen> {
+  @override
+  void initState() {
+    setState(() {
+      NotesProvider data = new NotesProvider();
+      data.readData();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,24 +43,42 @@ class Home_Screen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Consumer<NotesProvider>(
           builder: (context, NotesProvider data, child) {
-            return data.getNotes.length != 0
-                ? ListView.builder(
-                    itemCount: data.getNotes.length,
-                    itemBuilder: (context, index) {
-                      return CardList(data.getNotes[index], index);
-                    },
-                  )
-                : GestureDetector(
-                    onTap: () {
-                      showAlertDialog(context);
-                    },
-                    child: Center(
-                        child: Text(
-                      "ADD SOME NOTES NOW",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    )));
+            //Future.delayed(const Duration(seconds: 10));
+            //if (data.getNotes.isNotEmpty) {
+            //data.readData();
+
+            if (data.getNotes.isNotEmpty) {
+              return ListView.builder(
+                itemCount: data.getNotes.length,
+                itemBuilder: (context, index) {
+                  return CardList(data.getNotes[index], index);
+                },
+              );
+            } else {
+              //Future.delayed(const Duration(seconds: 10));
+              return GestureDetector(
+                  onTap: () {
+                    showAlertDialog(context);
+                  },
+                  child: Center(
+                      child: Text(
+                    "ADD SOME NOTES NOW",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  )));
+            }
+            /*GestureDetector(
+                onTap: () {
+                  showAlertDialog(context);
+                },
+                child: Center(
+                    child: Text(
+                  "ADD SOME NOTES NOW",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                )));*/
           },
         ),
       ),
@@ -92,7 +127,7 @@ class CardList extends StatelessWidget {
                     Provider.of<NotesProvider>(context, listen: false)
                         .removeNotes(index);
                     //Provider.of<NotesProvider>(context, listen: false)
-                    //  .removeNotes2(index);
+                    // .removeNotes(index);
                   }),
             )));
   }

@@ -6,10 +6,16 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class NotesProvider extends ChangeNotifier {
+  NotesProvider() {
+    readData();
+    //Future.delayed(const Duration(seconds: 5));
+    //print("notes are:" + getNotes().toString());
+  }
   //Notes List
   List<Note> _notes = <Note>[];
 
   List<Note> get getNotes {
+    //Future.delayed(const Duration(seconds: 5));
     return _notes;
   }
 
@@ -35,6 +41,27 @@ class NotesProvider extends ChangeNotifier {
         .catchError((error) => print("Failed to add user: $error"));
   }
 
+  Future<void> readData() async {
+    notifyListeners();
+    return FirebaseFirestore.instance
+        .collection('admin_memory_game')
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        Note note =
+            new Note(doc["level"].toString(), doc["levelScore"].toString());
+
+        _notes.add(note);
+
+        //_notes.add(doc["level"]);
+        //_notes.add(doc["levelScore"]);
+
+        print("title:" + note.title);
+        print("description:" + note.description);
+      });
+    });
+  }
+
 // function to add data to list of notes
   /*Future<void> addNotes(String title, String descriptions) async {
     Note note = new Note(title, descriptions);
@@ -50,8 +77,8 @@ class NotesProvider extends ChangeNotifier {
   Future<void> removeNotes(int index) async {
     CollectionReference users =
         FirebaseFirestore.instance.collection('admin_memory_game');
-    //_notes.removeAt(index);
-    //notifyListeners();
+    _notes.removeAt(index);
+    notifyListeners();
     return users
         .doc((index).toString())
         .delete()
