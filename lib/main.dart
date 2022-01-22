@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
         ),
         //nextScreen: LoginScreen(),
         //nextScreen:  HomePage(),
-        nextScreen: AdminWc(),
+        nextScreen: LoginScreen(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
         backgroundColor: kBackground,
