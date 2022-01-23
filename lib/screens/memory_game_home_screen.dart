@@ -58,21 +58,16 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
     return WillPopScope(
       child: Scaffold(
         appBar: AppBar(
-          //backgroundColor: Colors.blueGrey,
           backgroundColor: kDarkGreen,
           centerTitle: true,
           title: const Text("Memory game"),
         ),
-        //backgroundColor: Colors.blueGrey[200],
         backgroundColor: kBackground,
         body: ListView(children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
             child: Column(
               children: <Widget>[
-                //SizedBox(
-                //height: 40,
-                //),
                 homeModel.points != details.scoreLevel()
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -178,11 +173,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                           ),
                           Image.asset(
                             "assets/youWonMEorygame.gif",
-                            //"assets/youDidIt.gif",
-
                             height: 200,
-                            // width: 1000,
-                            //fit: BoxFit.cover,
                             fit: BoxFit.fitWidth,
                           ),
                         ],

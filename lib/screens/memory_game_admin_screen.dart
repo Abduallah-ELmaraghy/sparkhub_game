@@ -14,21 +14,12 @@ class MemoryGameAdminScreen extends StatefulWidget {
 
 class MemoryGameAdminScreenState extends State<MemoryGameAdminScreen> {
   @override
-  /*void initState() {
-    setState(() {
-      NotesProvider data = new NotesProvider();
-      data.readData();
-    });
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkGreen,
-      // backgroundColor: kBackground,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        //titleSpacing: 0.0,
         toolbarHeight: 300,
         centerTitle: true,
         iconTheme: const IconThemeData(
@@ -41,37 +32,14 @@ class MemoryGameAdminScreenState extends State<MemoryGameAdminScreen> {
           ),
           Image.asset(
             "assets/gameIcone.gif",
-            //height: 200,
-            // width: 1000,
-            //fit: BoxFit.cover,
             fit: BoxFit.fitWidth,
           ),
         ]),
       ),
-
-      /*appBar: AppBar(
-        
-          centerTitle: true,
-          iconTheme: IconThemeData(
-            color: Colors.black,
-          ),
-          backgroundColor: Colors.white,
-          titleSpacing: 0.0,
-          toolbarHeight: 200,
-          title: Image.asset(
-            "assets/gameIcone.gif",
-            height: 200,
-            width: 600,
-            fit: BoxFit.cover,
-          )),*/
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Consumer<MemoryGameProvider>(
           builder: (context, MemoryGameProvider data, child) {
-            //Future.delayed(const Duration(seconds: 10));
-            //if (data.getNotes.isNotEmpty) {
-            //data.readData();
-            //Provider.of<NotesProvider>(context, listen: false).readData();
             if (data.getGame.isNotEmpty) {
               return ListView.builder(
                 itemCount: data.getGame.length,
@@ -80,7 +48,6 @@ class MemoryGameAdminScreenState extends State<MemoryGameAdminScreen> {
                 },
               );
             } else {
-              //Future.delayed(const Duration(seconds: 10));
               return GestureDetector(
                   onTap: () {
                     showAlertDialog(context);
@@ -93,17 +60,6 @@ class MemoryGameAdminScreenState extends State<MemoryGameAdminScreen> {
                     ),
                   )));
             }
-            /*GestureDetector(
-                onTap: () {
-                  showAlertDialog(context);
-                },
-                child: Center(
-                    child: Text(
-                  "ADD SOME NOTES NOW",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                )));*/
           },
         ),
       ),
@@ -151,8 +107,6 @@ class GameList extends StatelessWidget {
                     print("Game DELETED");
                     Provider.of<MemoryGameProvider>(context, listen: false)
                         .removeGame(index);
-                    //Provider.of<NotesProvider>(context, listen: false)
-                    // .removeNotes(index);
                   }),
             )));
   }
@@ -161,7 +115,7 @@ class GameList extends StatelessWidget {
 showAlertDialog(BuildContext context) {
   TextEditingController _level = TextEditingController();
   TextEditingController _levelScore = TextEditingController();
-  //TextEditingController _y = TextEditingController();
+
   // Create button
   Widget okButton = TextButton(
     child: const Text("ADD GAME"),

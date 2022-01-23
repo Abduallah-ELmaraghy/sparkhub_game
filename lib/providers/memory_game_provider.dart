@@ -8,18 +8,11 @@ import 'dart:convert';
 class MemoryGameProvider extends ChangeNotifier {
   MemoryGameProvider() {
     readData();
-    //Future.delayed(const Duration(seconds: 5));
-    //print("notes are:" + getNotes().toString());
   }
 
-  //Notes List
   List<Game> _game = <Game>[];
 
   List<Game> get getGame {
-    //Note note = new Note(8.toString(), 0.toString());
-    //_notes.add(note);
-    //readData();
-    //Future.delayed(const Duration(seconds: 5));
     return _game;
   }
 
@@ -38,8 +31,8 @@ class MemoryGameProvider extends ChangeNotifier {
     return users
         .doc((_game.length - 1).toString())
         .set({
-          'level': level, // John Doe
-          'levelScore': levelscore, // Stokes and Sons
+          'level': level,
+          'levelScore': levelscore,
         })
         .then((value) => print("Game Added"))
         .catchError((error) => print("Failed to add Game: $error"));
@@ -56,26 +49,11 @@ class MemoryGameProvider extends ChangeNotifier {
 
         _game.add(game);
 
-        //_notes.add(doc["level"]);
-        //_notes.add(doc["levelScore"]);
-
         print("title:" + game.level);
         print("description:" + game.levelScore);
       });
     });
   }
-
-// function to add data to list of notes
-  /*Future<void> addNotes(String title, String descriptions) async {
-    Note note = new Note(title, descriptions);
-
-    _notes.add(note);
-
-    notifyListeners();
-  }*/
-
-  // function to remove or delete notes by using list index position
-  //CollectionReference users = FirebaseFirestore.instance.collection('admin_memory_game');
 
   Future<void> removeGame(int index) async {
     CollectionReference users =
@@ -88,9 +66,4 @@ class MemoryGameProvider extends ChangeNotifier {
         .then((value) => print("Game Deleted"))
         .catchError((error) => print("Failed to delete Game: $error"));
   }
-
-  /* Future<void> removeNotes2(int index) async {
-    _notes.removeAt(index);
-    notifyListeners();
-  }*/
 }

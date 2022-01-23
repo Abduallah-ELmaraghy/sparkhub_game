@@ -19,54 +19,13 @@ class LevelsPage extends StatefulWidget {
 }
 
 class LevelsPageState extends State<LevelsPage> {
-  LevelsPageState() {
-    //player1.stop();
-  }
+  LevelsPageState() {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: Colors.blueGrey[200],
         backgroundColor: kBackground,
-        /*appBar: new AppBar(
-          // backgroundColor: Colors.white,
-          //titleSpacing: 0.0,
-          toolbarHeight: 400,
-          centerTitle: true,
-          iconTheme: IconThemeData(
-            color: Colors.black,
-          ),
-          title: Column(children: [
-            Text(
-              "Train your memory by playing",
-              style: TextStyle(color: Colors.black),
-            ),
-            Image.asset(
-              "assets/memoryGame.gif",
-              //height: 200,
-              // width: 1000,
-              //fit: BoxFit.cover,
-              fit: BoxFit.fitWidth,
-            ),
-          ]),
-        ),*/
-        /*appBar: AppBar(
-          
-          toolbarHeight: 100,
-          backgroundColor: kDarkGreen,
-          centerTitle: true,
-          title: const Text(
-            "Memory Game",
-            style: TextStyle(
-                fontFamily: "Font1",
-                fontSize: 40,
-                fontWeight: FontWeight.normal,
-                color: Colors.black),
-            
-          ),
-        ),*/
         appBar: AppBar(
-          //backgroundColor: Colors.blueGrey,
           backgroundColor: kDarkGreen,
           centerTitle: true,
           title: const Text("Memory game"),
@@ -79,8 +38,6 @@ class LevelsPageState extends State<LevelsPage> {
             Image.asset(
               "assets/memoryGame.gif",
               height: 200,
-              // width: 1000,
-              //fit: BoxFit.cover,
               fit: BoxFit.fitWidth,
             ),
             Container(
