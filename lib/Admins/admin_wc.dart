@@ -119,7 +119,7 @@ class _AdminWcState extends State<AdminWc> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0)),
                   ),
-                  controller: WordMapController1,
+                  controller: WordMapController3,
                 ),width:200),
                 SizedBox(width: 20,),
 
@@ -133,7 +133,7 @@ class _AdminWcState extends State<AdminWc> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0)),
                   ),
-                  controller: WordMapController2,
+                  controller: WordMapController4,
                 ),
                 width:100),
 
@@ -149,7 +149,7 @@ class _AdminWcState extends State<AdminWc> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0)),
                   ),
-                  controller: WordMapController1,
+                  controller: WordMapController5,
                 ),width:200),
                 SizedBox(width: 20,),
                 Container(child:TextFormField(
@@ -162,7 +162,7 @@ class _AdminWcState extends State<AdminWc> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(32.0)),
                   ),
-                  controller: WordMapController2,
+                  controller: WordMapController6,
                 ),
                 width:100),
 
