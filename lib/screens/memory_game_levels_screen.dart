@@ -5,6 +5,7 @@ import '../constants/style.dart';
 import '../providers/notes_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:sparkhub_game/constants/style.dart';
 
 Details details = Details();
 AssetsAudioPlayer player1 = new AssetsAudioPlayer();
@@ -25,18 +26,67 @@ class LevelsPageState extends State<LevelsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueGrey[200],
+        // backgroundColor: Colors.blueGrey[200],
+        backgroundColor: kBackground,
+        /*appBar: new AppBar(
+          // backgroundColor: Colors.white,
+          //titleSpacing: 0.0,
+          toolbarHeight: 400,
+          centerTitle: true,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+          title: Column(children: [
+            Text(
+              "Train your memory by playing",
+              style: TextStyle(color: Colors.black),
+            ),
+            Image.asset(
+              "assets/memoryGame.gif",
+              //height: 200,
+              // width: 1000,
+              //fit: BoxFit.cover,
+              fit: BoxFit.fitWidth,
+            ),
+          ]),
+        ),*/
+        /*appBar: AppBar(
+          
+          toolbarHeight: 100,
+          backgroundColor: kDarkGreen,
+          centerTitle: true,
+          title: const Text(
+            "Memory Game",
+            style: TextStyle(
+                fontFamily: "Font1",
+                fontSize: 40,
+                fontWeight: FontWeight.normal,
+                color: Colors.black),
+            
+          ),
+        ),*/
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
+          //backgroundColor: Colors.blueGrey,
+          backgroundColor: kDarkGreen,
           centerTitle: true,
           title: const Text("Memory game"),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.max,
           children: [
             Container(
+              child: Image.asset(
+                "assets/memoryGame.gif",
                 height: 200,
+                // width: 1000,
+                //fit: BoxFit.cover,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+            Container(
+                height: 100,
                 width: 400,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
@@ -76,14 +126,14 @@ class LevelsPageState extends State<LevelsPage> {
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
+                    primary: Color(100),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
                 )),
             Container(
-              height: 200,
+              height: 100,
               width: 400,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
@@ -122,7 +172,7 @@ class LevelsPageState extends State<LevelsPage> {
                   ],
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.orange,
+                  primary: Color(100),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -130,7 +180,7 @@ class LevelsPageState extends State<LevelsPage> {
               ),
             ),
             Container(
-              height: 200,
+              height: 100,
               width: 400,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
@@ -169,7 +219,7 @@ class LevelsPageState extends State<LevelsPage> {
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.red,
+                    primary: Color(100),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),

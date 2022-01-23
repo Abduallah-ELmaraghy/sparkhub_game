@@ -82,6 +82,7 @@ flutter:
   assets:
     - assets/logo.png
     - assets/gameIcone.gif
+    - assets/memoryGame.gif
     - assets/MemoryGameImages/
     - assets/Sounds/
     - assets/goodjob.gif
