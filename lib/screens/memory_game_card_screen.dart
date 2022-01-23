@@ -9,6 +9,7 @@ class CardScreen extends StatefulWidget {
   final int cardIndex;
   final MemoryGameHomeScreenState parent;
 
+  // ignore: use_key_in_widget_constructors
   const CardScreen(
       {required this.imagePathUrl,
       required this.cardIndex,

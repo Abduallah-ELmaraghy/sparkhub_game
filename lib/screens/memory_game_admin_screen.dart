@@ -1,20 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../models/note.dart';
-import '../providers/notes_provider.dart';
+import '../models/memory_game_data_model.dart';
+import '../providers/memory_game_provider.dart';
 import 'package:provider/provider.dart';
 import '../constants/style.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-class Home_Screen extends StatefulWidget {
-  const Home_Screen({Key? key}) : super(key: key);
+class MemoryGameAdminScreen extends StatefulWidget {
+  const MemoryGameAdminScreen({Key? key}) : super(key: key);
 
   @override
-  Home_Screen_state createState() => Home_Screen_state();
+  MemoryGameAdminScreenState createState() => MemoryGameAdminScreenState();
 }
 
-class Home_Screen_state extends State<Home_Screen> {
+class MemoryGameAdminScreenState extends State<MemoryGameAdminScreen> {
   @override
   /*void initState() {
     setState(() {
@@ -28,18 +26,18 @@ class Home_Screen_state extends State<Home_Screen> {
     return Scaffold(
       backgroundColor: kDarkGreen,
       // backgroundColor: kBackground,
-      appBar: new AppBar(
+      appBar: AppBar(
         backgroundColor: Colors.white,
         //titleSpacing: 0.0,
         toolbarHeight: 300,
         centerTitle: true,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black,
         ),
         title: Column(children: [
           Text(
-            "Mange memory game",
-            style: TextStyle(color: Colors.black),
+            "Mange Memory GAME",
+            style: TextStyle(color: kDarkGreen),
           ),
           Image.asset(
             "assets/gameIcone.gif",
@@ -68,17 +66,17 @@ class Home_Screen_state extends State<Home_Screen> {
           )),*/
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<NotesProvider>(
-          builder: (context, NotesProvider data, child) {
+        child: Consumer<MemoryGameProvider>(
+          builder: (context, MemoryGameProvider data, child) {
             //Future.delayed(const Duration(seconds: 10));
             //if (data.getNotes.isNotEmpty) {
             //data.readData();
             //Provider.of<NotesProvider>(context, listen: false).readData();
-            if (data.getNotes.isNotEmpty) {
+            if (data.getGame.isNotEmpty) {
               return ListView.builder(
-                itemCount: data.getNotes.length,
+                itemCount: data.getGame.length,
                 itemBuilder: (context, index) {
-                  return CardList(data.getNotes[index], index);
+                  return GameList(data.getGame[index], index);
                 },
               );
             } else {
@@ -87,9 +85,9 @@ class Home_Screen_state extends State<Home_Screen> {
                   onTap: () {
                     showAlertDialog(context);
                   },
-                  child: Center(
+                  child: const Center(
                       child: Text(
-                    "ADD SOME NOTES NOW",
+                    "ADD SOME GAMES NOW",
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -114,7 +112,7 @@ class Home_Screen_state extends State<Home_Screen> {
           showAlertDialog(context);
         },
         backgroundColor: Colors.white,
-        child: Icon(
+        child: const Icon(
           Icons.add,
           color: Colors.black,
         ),
@@ -124,35 +122,35 @@ class Home_Screen_state extends State<Home_Screen> {
 }
 
 // ignore: must_be_immutable
-class CardList extends StatelessWidget {
-  final Note notes;
+class GameList extends StatelessWidget {
+  final Game game;
   int index;
 
-  CardList(this.notes, this.index);
+  GameList(this.game, this.index, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(2.0),
         child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(10))),
             child: ListTile(
-              leading: Icon(Icons.videogame_asset_rounded),
+              leading: const Icon(Icons.videogame_asset_rounded),
               title: Text(
-                notes.title,
+                game.level,
               ),
               subtitle: Text(
-                notes.description,
+                game.levelScore,
               ),
               trailing: IconButton(
-                  icon: Icon(Icons.delete),
+                  icon: const Icon(Icons.delete),
                   color: Colors.red,
                   onPressed: () {
-                    print("HELLO DELETED");
-                    Provider.of<NotesProvider>(context, listen: false)
-                        .removeNotes(index);
+                    print("Game DELETED");
+                    Provider.of<MemoryGameProvider>(context, listen: false)
+                        .removeGame(index);
                     //Provider.of<NotesProvider>(context, listen: false)
                     // .removeNotes(index);
                   }),
@@ -161,33 +159,32 @@ class CardList extends StatelessWidget {
 }
 
 showAlertDialog(BuildContext context) {
-  TextEditingController _Title = TextEditingController();
-  TextEditingController _Description = TextEditingController();
+  TextEditingController _level = TextEditingController();
+  TextEditingController _levelScore = TextEditingController();
+  //TextEditingController _y = TextEditingController();
   // Create button
   Widget okButton = TextButton(
-    child: Text("ADD NOTE"),
+    child: const Text("ADD GAME"),
     onPressed: () {
-      // Provider.of<NotesProviders>(context, listen: false)
-      //     .addNotes(_Title.text, _Description.text);
-      //context.read<NotesProvider>().addNotes(_Title.text, _Description.text);
-      context.read<NotesProvider>().addData(_Title.text, _Description.text);
+      context.read<MemoryGameProvider>().addData(_level.text, _levelScore.text);
       Navigator.of(context).pop();
     },
   );
 
   // Create AlertDialog
+
   AlertDialog alert = AlertDialog(
-    title: Text("ADD A NEW NOTE "),
+    title: const Text("ADD A NEW GAME "),
     content: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         TextField(
-          controller: _Title,
-          decoration: InputDecoration(hintText: "Enter Title"),
+          controller: _level,
+          decoration: const InputDecoration(hintText: "Enter Level"),
         ),
         TextField(
-          controller: _Description,
-          decoration: InputDecoration(hintText: "Enter Description"),
+          controller: _levelScore,
+          decoration: const InputDecoration(hintText: "Enter Level's Score"),
         ),
       ],
     ),

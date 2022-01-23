@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:sparkhub_game/models/wcmodels/Constants.dart';
+
 import '../models/memory_game_levels_model.dart';
 import '../constants/style.dart';
-import '../providers/notes_provider.dart';
+import '../providers/memory_game_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:sparkhub_game/constants/style.dart';
 
 Details details = Details();
-AssetsAudioPlayer player1 = new AssetsAudioPlayer();
-AssetsAudioPlayer player2 = new AssetsAudioPlayer();
+AssetsAudioPlayer player1 = AssetsAudioPlayer();
+AssetsAudioPlayer player2 = AssetsAudioPlayer();
 
 class LevelsPage extends StatefulWidget {
   const LevelsPage({Key? key}) : super(key: key);
@@ -76,14 +76,12 @@ class LevelsPageState extends State<LevelsPage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Container(
-              child: Image.asset(
-                "assets/memoryGame.gif",
-                height: 200,
-                // width: 1000,
-                //fit: BoxFit.cover,
-                fit: BoxFit.fitWidth,
-              ),
+            Image.asset(
+              "assets/memoryGame.gif",
+              height: 200,
+              // width: 1000,
+              //fit: BoxFit.cover,
+              fit: BoxFit.fitWidth,
             ),
             Container(
                 height: 100,
@@ -126,7 +124,7 @@ class LevelsPageState extends State<LevelsPage> {
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Color(100),
+                    primary: const Color(0xff0d5063),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -172,7 +170,7 @@ class LevelsPageState extends State<LevelsPage> {
                   ],
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Color(100),
+                  primary: const Color(0xff0d5063),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -219,7 +217,7 @@ class LevelsPageState extends State<LevelsPage> {
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Color(100),
+                    primary: const Color(0xff0d5063),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),

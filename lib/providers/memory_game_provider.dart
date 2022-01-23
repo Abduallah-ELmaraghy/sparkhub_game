@@ -1,33 +1,34 @@
 import 'package:flutter/cupertino.dart';
-import '../models/note.dart';
+import '../models/memory_game_data_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class NotesProvider extends ChangeNotifier {
-  NotesProvider() {
+class MemoryGameProvider extends ChangeNotifier {
+  MemoryGameProvider() {
     readData();
     //Future.delayed(const Duration(seconds: 5));
     //print("notes are:" + getNotes().toString());
   }
-  //Notes List
-  List<Note> _notes = <Note>[];
 
-  List<Note> get getNotes {
+  //Notes List
+  List<Game> _game = <Game>[];
+
+  List<Game> get getGame {
     //Note note = new Note(8.toString(), 0.toString());
     //_notes.add(note);
     //readData();
     //Future.delayed(const Duration(seconds: 5));
-    return _notes;
+    return _game;
   }
 
-  Future<void> addData(String title, String descriptions) async {
+  Future<void> addData(String level, String levelscore) async {
     /* final Stream<QuerySnapshot> game =
         FirebaseFirestore.instance.collection('admin_memoryGame').snapshots();*/
-    Note note = new Note(title, descriptions);
+    Game note = Game(level, levelscore);
 
-    _notes.add(note);
+    _game.add(note);
 
     notifyListeners();
     CollectionReference users =
@@ -35,13 +36,13 @@ class NotesProvider extends ChangeNotifier {
 
     // Call the user's CollectionReference to add a new user
     return users
-        .doc((_notes.length - 1).toString())
+        .doc((_game.length - 1).toString())
         .set({
-          'level': title, // John Doe
-          'levelScore': descriptions, // Stokes and Sons
+          'level': level, // John Doe
+          'levelScore': levelscore, // Stokes and Sons
         })
-        .then((value) => print("User Added"))
-        .catchError((error) => print("Failed to add user: $error"));
+        .then((value) => print("Game Added"))
+        .catchError((error) => print("Failed to add Game: $error"));
   }
 
   Future<void> readData() async {
@@ -51,16 +52,15 @@ class NotesProvider extends ChangeNotifier {
         .get()
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
-        Note note =
-            new Note(doc["level"].toString(), doc["levelScore"].toString());
+        Game game = Game(doc["level"].toString(), doc["levelScore"].toString());
 
-        _notes.add(note);
+        _game.add(game);
 
         //_notes.add(doc["level"]);
         //_notes.add(doc["levelScore"]);
 
-        print("title:" + note.title);
-        print("description:" + note.description);
+        print("title:" + game.level);
+        print("description:" + game.levelScore);
       });
     });
   }
@@ -77,16 +77,16 @@ class NotesProvider extends ChangeNotifier {
   // function to remove or delete notes by using list index position
   //CollectionReference users = FirebaseFirestore.instance.collection('admin_memory_game');
 
-  Future<void> removeNotes(int index) async {
+  Future<void> removeGame(int index) async {
     CollectionReference users =
         FirebaseFirestore.instance.collection('admin_memory_game');
-    _notes.removeAt(index);
+    _game.removeAt(index);
     notifyListeners();
     return users
         .doc((index).toString())
         .delete()
-        .then((value) => print("User Deleted"))
-        .catchError((error) => print("Failed to delete user: $error"));
+        .then((value) => print("Game Deleted"))
+        .catchError((error) => print("Failed to delete Game: $error"));
   }
 
   /* Future<void> removeNotes2(int index) async {

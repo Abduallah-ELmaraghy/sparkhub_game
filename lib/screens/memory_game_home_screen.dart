@@ -4,7 +4,7 @@ import 'memory_game_card_screen.dart';
 import 'memory_game_levels_screen.dart';
 import '../models/memory_game_home_screen_model.dart';
 import '../constants/style.dart';
-import 'memory_game_levels_screen.dart';
+
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:sparkhub_game/constants/style.dart';
 
@@ -55,8 +55,8 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return new WillPopScope(
-      child: new Scaffold(
+    return WillPopScope(
+      child: Scaffold(
         appBar: AppBar(
           //backgroundColor: Colors.blueGrey,
           backgroundColor: kDarkGreen,
@@ -137,7 +137,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                               width: 200,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                color: Colors.blueGrey,
+                                color: kDarkGreen,
                                 borderRadius: BorderRadius.circular(24),
                               ),
                               child: const Text(
@@ -164,8 +164,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                               width: 200,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Colors.blueGrey, width: 2),
+                                border: Border.all(color: kDarkGreen, width: 2),
                                 borderRadius: BorderRadius.circular(24),
                               ),
                               child: const Text(
@@ -176,6 +175,15 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
+                          ),
+                          Image.asset(
+                            "assets/youWonMEorygame.gif",
+                            //"assets/youDidIt.gif",
+
+                            height: 200,
+                            // width: 1000,
+                            //fit: BoxFit.cover,
+                            fit: BoxFit.fitWidth,
                           ),
                         ],
                       )
