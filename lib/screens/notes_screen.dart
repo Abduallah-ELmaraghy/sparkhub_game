@@ -16,29 +16,56 @@ class Home_Screen extends StatefulWidget {
 
 class Home_Screen_state extends State<Home_Screen> {
   @override
-  void initState() {
+  /*void initState() {
     setState(() {
       NotesProvider data = new NotesProvider();
       data.readData();
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kDarkGreen,
       // backgroundColor: kBackground,
+      appBar: new AppBar(
+        backgroundColor: Colors.white,
+        //titleSpacing: 0.0,
+        toolbarHeight: 300,
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+        title: Column(children: [
+          Text(
+            "Mange memory game",
+            style: TextStyle(color: Colors.black),
+          ),
+          Image.asset(
+            "assets/gameIcone.gif",
+            //height: 200,
+            // width: 1000,
+            //fit: BoxFit.cover,
+            fit: BoxFit.fitWidth,
+          ),
+        ]),
+      ),
 
-      appBar: AppBar(
-          backgroundColor: kDarkGreen,
+      /*appBar: AppBar(
+        
+          centerTitle: true,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.white,
           titleSpacing: 0.0,
           toolbarHeight: 200,
           title: Image.asset(
             "assets/gameIcone.gif",
             height: 200,
-            width: 500,
+            width: 600,
             fit: BoxFit.cover,
-          )),
+          )),*/
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Consumer<NotesProvider>(
@@ -46,7 +73,7 @@ class Home_Screen_state extends State<Home_Screen> {
             //Future.delayed(const Duration(seconds: 10));
             //if (data.getNotes.isNotEmpty) {
             //data.readData();
-
+            //Provider.of<NotesProvider>(context, listen: false).readData();
             if (data.getNotes.isNotEmpty) {
               return ListView.builder(
                 itemCount: data.getNotes.length,

@@ -20,9 +20,7 @@ class _AdminWcState extends State<AdminWc> {
   final WordMapController4 = TextEditingController();
   final WordMapController5 = TextEditingController();
   final WordMapController6 = TextEditingController();
- 
- 
- 
+
   List<Map<String, String>> wordsMap = [
     {
       "YEMEK": "3,9,15,21,27",
@@ -59,53 +57,139 @@ class _AdminWcState extends State<AdminWc> {
         child: Scaffold(
             appBar: AppBar(
               title: Text(
-                "Admin",
+                "Word Connect Admin",
               ),
             ),
             body: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                
                 TextFormField(
+                  autofocus: false,
+                  style: new TextStyle(
+                      fontWeight: FontWeight.normal, color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: 'Map Letter',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    border: OutlineInputBorder(
+                      
+                        borderRadius: BorderRadius.circular(32.0)),
+                  ),
                   controller: MapLetterController,
                 ),
-              TextFormField(
+                Row(children:[
+                Container(child:TextFormField(
+                  autofocus: true,
+                  style: new TextStyle(
+                      fontWeight: FontWeight.normal, color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: 'Word Map Number 1',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32.0)),
+                  ),
                   controller: WordMapController1,
-                ),
-              TextFormField(
+                ),width:200),
+                SizedBox(width: 20,),
+                
+                Container(child:TextFormField(
+                  autofocus: true,
+                  style: new TextStyle(
+                      fontWeight: FontWeight.normal, color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: 'Index 1',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32.0)),
+                  ),
                   controller: WordMapController2,
                 ),
-              TextFormField(
-                  controller: WordMapController3,
-                ),
-              TextFormField(
-                  controller: WordMapController4,
-                ),
-              TextFormField(
-                  controller: WordMapController5,
-                ),
-              TextFormField(
-                  controller: WordMapController6,
-                ),
-              
+                width:100),
 
-                    ///controller: mycontroller,
-                  
+              ]),             Row(children:[
+                Container(child:TextFormField(
+                  autofocus: true,
+                  style: new TextStyle(
+                      fontWeight: FontWeight.normal, color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: 'Word Map Number 2',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32.0)),
+                  ),
+                  controller: WordMapController1,
+                ),width:200),
+                SizedBox(width: 20,),
+
+                Container(child:TextFormField(
+                  autofocus: true,
+                  style: new TextStyle(
+                      fontWeight: FontWeight.normal, color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: 'Index 2',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32.0)),
+                  ),
+                  controller: WordMapController2,
+                ),
+                width:100),
+
+              ]),             
+              Row(children:[
+                Container(child:TextFormField(
+                  autofocus: true,
+                  style: new TextStyle(
+                      fontWeight: FontWeight.normal, color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: 'Word Map Number 3',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32.0)),
+                  ),
+                  controller: WordMapController1,
+                ),width:200),
+                SizedBox(width: 20,),
+                Container(child:TextFormField(
+                  autofocus: true,
+                  style: new TextStyle(
+                      fontWeight: FontWeight.normal, color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: 'Index 3',
+                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32.0)),
+                  ),
+                  controller: WordMapController2,
+                ),
+                width:100),
+
+              ]),             
+                
+
+                ///controller: mycontroller,
+
                 ElevatedButton(
+                    
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
                         printasdlast();
                         List<Map<String, String>> wordsMap = [
-    {
-      WordMapController1.text:WordMapController2.text,
-      WordMapController3.text:WordMapController4.text,
-      WordMapController5.text:WordMapController6.text ,
-    }
-  ];
-                        
+                          {
+                            WordMapController1.text: WordMapController2.text,
+                            WordMapController3.text: WordMapController4.text,
+                            WordMapController5.text: WordMapController6.text,
+                          }
+                        ];
+
                         //Provider.of<WordConnect>(context, listen: false)
-                         //   .addMapLetterController(MapLetterController.text);
-                          
-                            Provider.of<WordConnect>(context, listen: false)
-                            .addWordMapController(wordsMap,MapLetterController.text);
+                        //   .addMapLetterController(MapLetterController.text);
+
+                        Provider.of<WordConnectProvider>(context, listen: false)
+                            .addWordMapController(
+                                wordsMap, MapLetterController.text);
 
 //context.watch<WordConnect>().addWordmap(mycontroller.text);
 

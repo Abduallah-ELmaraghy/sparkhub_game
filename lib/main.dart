@@ -26,6 +26,7 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => NotesProvider()),
         ChangeNotifierProvider(create: (_) => MatchingProviders()),
+        ChangeNotifierProvider(create: (_) => WordConnectProvider()),
       ],
       child: const MyApp(),
     ),
