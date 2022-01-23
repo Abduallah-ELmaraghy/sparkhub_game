@@ -20,48 +20,49 @@ class MatchingProviders extends ChangeNotifier {
     final allData = List.from(
         querySnapshot.docs.map((doc) => {'data': doc.data(), 'id': doc.id}));
     for (var element in allData) {
-      notifyListeners();
+      print(element['data']['choices']);
       Matching matching = Matching.fromJson(element);
       _matching.add(matching);
-      _isLoaded = true;
     }
+      _isLoaded = true;
+      notifyListeners();
   }
 
 // function to add data to list of notes
-  void addMatching(String color, String id, String emoji) {
-    var added_matching = FirebaseFirestore.instance.collection('matchings').add({
-      'color': color,
-      'id': id,
-       'emoji': emoji,
+  // void addMatching(String color, String id, String emoji) {
+  //   var added_matching = FirebaseFirestore.instance.collection('matchings').add({
+  //     'color': color,
+  //     'id': id,
+  //      'emoji': emoji,
      
-    }).then((value) {
-      Matching matching = new Matching(
-          id: value.id,
-          emoji:emoji,
-          color:color
-         );
-      _matching.add(matching);
-      notifyListeners();
-    });
-  }
+  //   }).then((value) {
+  //     Matching matching = new Matching(
+  //         id: value.id,
+  //         emoji:emoji,
+  //         color:color
+  //        );
+  //     _matching.add(matching);
+  //     notifyListeners();
+  //   });
+  // }
 
-  void editMatching(int index, String id, String color, String emoji,
-      String p_price, String p_promotion_price) {
-    var added_matching =
-        FirebaseFirestore.instance.collection('matchings').doc(id).update({
-      'color': color,
-      'id': id,
-      'emoji': emoji,
+  // void editMatching(int index, String id, String color, String emoji,
+  //     String p_price, String p_promotion_price) {
+  //   var added_matching =
+  //       FirebaseFirestore.instance.collection('matchings').doc(id).update({
+  //     'color': color,
+  //     'id': id,
+  //     'emoji': emoji,
      
-    }).then((value) {
-      Matching matching = new Matching(
-       );
-      _matching[index].color = color;
-      _matching[index].emoji = emoji;
-      _matching[index].id = id;
-       notifyListeners();
-    });
-  }
+  //   }).then((value) {
+  //     Matching matching = new Matching(
+  //      );
+  //     _matching[index].color = color;
+  //     _matching[index].emoji = emoji;
+  //     _matching[index].id = id;
+  //      notifyListeners();
+  //   });
+  // }
 
   // function to remove or delete Matching by using list index position
   void removeMatching(int index) {

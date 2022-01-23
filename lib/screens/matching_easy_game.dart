@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -6,7 +5,9 @@ import 'package:sparkhub_game/constants/style.dart';
 import 'package:provider/provider.dart';
 import 'package:sparkhub_game/models/matching_model.dart';
 import 'package:sparkhub_game/screens/finishedScreen.dart';
+import 'package:sparkhub_game/screens/matching_game.dart';
 import 'dart:async';
+import '../providers/matching_providers.dart';
 
 class MatchingGameEasy extends StatefulWidget {
   createState() => MatchingGameState();
@@ -18,37 +19,38 @@ class MatchingGameState extends State<MatchingGameEasy> {
         context, MaterialPageRoute(builder: (context) => Finish(score)));
   }
 
-  final Map<String, bool> score =
-      {}; //map for the score takes the string (emoji) and bool (correct or not)
+  final Map<String, bool> score ={}; //map for the score takes the string (emoji) and bool (correct or not)
+  
    List<Matching> _matching = <Matching>[];
-
-  final Map choices = {
-    '🦞': Colors.red,
-    '🌳': Colors.green,
-    '🥶': Colors.blue,
-    '🍋': Colors.yellow,
-    '🏀': Colors.orange,
-    '💜': Colors.purple,
-  };
+   Map choices = {};
   int counter = 0;
   late DateTime start_time;
   int time_to_finish = 10;
   bool finished = false;
   var time_difference;
-  late String scoree;
+  //late String scoree;
   @override
   initState() {
     time_difference = 0;
     start_time = new DateTime.now();
   }
-
   void dispose() {
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
-    Timer.periodic(Duration(seconds: 1), (timer) {
+    
+    MatchingProviders gameProvider =
+        Provider.of<MatchingProviders>(context, listen: true);
+    Future.delayed(Duration(seconds: 0), () async {
+      gameProvider.getMatchingsCollectionFromFirebase().then((value) {});
+    });
+    List<Matching> games = gameProvider.getMatching;
+   if(games.isNotEmpty){
+    choices = games[1].choices;
+    }
+      Timer.periodic(Duration(seconds: 1), (timer) {
+      if(mounted)
       setState(() {
         if ((time_to_finish - time_difference).toInt() > 0) {
           time_difference = new DateTime.now().difference(start_time).inSeconds;
@@ -59,7 +61,7 @@ class MatchingGameState extends State<MatchingGameEasy> {
           }
         }
       });
-    });
+    });;
     return Scaffold(
       backgroundColor: kBackground,
       appBar: AppBar(
@@ -71,7 +73,7 @@ class MatchingGameState extends State<MatchingGameEasy> {
                     fontFamily: 'Cairo')),
         backgroundColor: kButtonColor,
       ),
-      body: Row(
+      body: (choices.isEmpty)? Container(child: Text('Loading...'),): Row(
         // all the app in row
         mainAxisAlignment: MainAxisAlignment
             .spaceAround, // Place the free space evenly between the children widget and page
@@ -134,15 +136,18 @@ class MatchingGameState extends State<MatchingGameEasy> {
   Widget _buildDragTarget(emoji) {
     return DragTarget<String>(
       builder: (context, incoming, rejected) {
+        List<String> color_string = choices[emoji].toString().split(',');
+        Color color = Color.fromARGB(255, int.parse(color_string[0]), int.parse(color_string[1]), int.parse(color_string[2]));
         if (score[emoji] == true) {
           return _keepgoingScreen(context);
         } else {
-          return Container(color: choices[emoji], height: 80, width: 200);
+          return Container(color: color, height: 80, width: 200);
         }
       },
       onWillAccept: (data) => data == emoji, //test if it accecpted oe not
       onAccept: (data) {
         setState(() {
+          if(mounted)
           score[emoji] = true;
         });
       },

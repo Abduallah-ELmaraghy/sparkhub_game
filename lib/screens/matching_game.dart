@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:sparkhub_game/models/matching_model.dart';
 import 'package:sparkhub_game/constants/style.dart';
 import 'package:provider/provider.dart';
 import 'package:sparkhub_game/screens/finishedScreen.dart';
 import 'dart:async';
-
+import '../providers/matching_providers.dart';
 class MatchingGame extends StatefulWidget {
   createState() => MatchingGameState();
 }
@@ -14,79 +15,60 @@ class MatchingGameState extends State<MatchingGame> {
     Navigator.push(context,MaterialPageRoute( builder: (context) => Finish(score)));
   }
   final Map<String, bool> score ={}; //map for the score takes the string (emoji) and bool (correct or not)
-
-  final Map choices = {
-    '🦞': Colors.red,
-    '🌳': Colors.green,
-    '🥶': Colors.blue,
-    '🍋': Colors.yellow,
-    '🏀': Colors.orange,
-    '💜': Colors.purple,
-  };
-
-     final Map thecolors = {
-    Colors.red: 'Red',
-    Colors.green: 'Green',
-    Colors.blue: 'Blue',
-    Colors.yellow: 'Yellow',
-    Colors.orange: 'Orange',
-    Colors.purple: 'Purple',
-  };
-
-  int counter = 0; 
+ List<Matching> _matching = <Matching>[];
+   Map choices = {};
+  int counter = 0;
   late DateTime start_time;
-int time_to_finish = 10;
-bool finished = false;
-var time_difference;
-@override
-  initState(){
+  int time_to_finish = 5;
+  bool finished = false;
+  var time_difference;
+  //late String scoree;
+  @override
+  initState() {
     time_difference = 0;
-start_time = new DateTime.now();
-}
-void dispose() {
+    start_time = new DateTime.now();
+  }
+  void dispose() {
     super.dispose();
-}
+  }
 
   @override
   Widget build(BuildContext context) {
-    
-    Timer.periodic(Duration(seconds:1), (timer) { 
-      setState(() {
-        if((time_to_finish - time_difference).toInt( )> 0){
-      time_difference = new DateTime.now().difference(start_time).inSeconds;
-    }else{
-      if(finished == false){
-        _navigator(score.length.toString());
-        finished = true;
-      }
+     MatchingProviders gameProvider =
+        Provider.of<MatchingProviders>(context, listen: true);
+    Future.delayed(Duration(seconds: 0), () async {
+      gameProvider.getMatchingsCollectionFromFirebase().then((value) {});
+    });
+    List<Matching> games = gameProvider.getMatching;
+   if(games.isNotEmpty){
+    choices = games[0].choices;
     }
-        
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      if(mounted)
+      setState(() {
+        if ((time_to_finish - time_difference).toInt() > 0) {
+          time_difference = new DateTime.now().difference(start_time).inSeconds;
+        } else {
+          if (finished == false) {
+            _navigator(score.length.toString());
+            finished = true;
+          }
+        }
       });
     });
    return Scaffold(
      backgroundColor: kBackground,
        appBar: AppBar(
-        title: //Text('Score ${score.length} / 6',style:TextStyle(color: kBackground)), 
-        Text((time_to_finish - time_difference).toString()),
+        title: //Text('Score ${score.length} / 6',style:TextStyle(color: kBackground)),
+            Text((time_to_finish - time_difference).toString(),
+                style: TextStyle(
+                    fontSize: 20,
+                    color: kBlack.withOpacity(1),
+                    fontFamily: 'Cairo')),
         backgroundColor: kButtonColor,
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.refresh),
-        onPressed: () {
-          setState(() {
-            score.clear();
-            counter++;
-          });
-        },
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: kButtonColor,
-        child: Container(
-          height: 50.0,
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      body: Row(
+      
+      body:(choices.isEmpty)? Container(child: Text('Loading...'),): Row(
         // all the app in row
         mainAxisAlignment: MainAxisAlignment.spaceAround, // Place the free space evenly between the children widget and page
         children: [
@@ -137,23 +119,22 @@ void dispose() {
     )
     );
    }
+
   Widget _buildDragTarget(emoji) {
     return DragTarget<String>(
-      builder: (context, incoming, rejected) 
-          {
+      builder: (context, incoming, rejected) {
+        List<String> color_string = choices[emoji].toString().split(',');
+        Color color = Color.fromARGB(255, int.parse(color_string[0]), int.parse(color_string[1]), int.parse(color_string[2]));
         if (score[emoji] == true) {
-        return  _keepgoingScreen(context);
+          return _keepgoingScreen(context);
         } else {
-          return  Container(height:80,width: 200,
-          child:Text(thecolors[choices[emoji]],//red(color.red)
-          style:TextStyle(color: choices[emoji],fontSize: 50)
-          ),
-          ); 
+          return Container(color: color, height: 80, width: 200);
         }
       },
       onWillAccept: (data) => data == emoji, //test if it accecpted oe not
       onAccept: (data) {
         setState(() {
+          if(mounted)
           score[emoji] = true;
         });
       },
