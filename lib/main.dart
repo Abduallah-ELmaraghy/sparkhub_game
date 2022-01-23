@@ -11,6 +11,7 @@ import 'package:sparkhub_game/screens/memory_game_levels_screen.dart';
 import 'package:sparkhub_game/screens/wcscreens/home_page.dart';
 import 'package:sparkhub_game/providers/wordconnect_provider.dart';
 import 'package:sparkhub_game/Admins/admin_wc.dart';
+//import 'package:sparkhub_game/Admins/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'screens/memory_game_admin_screen.dart';
@@ -62,8 +63,8 @@ class MyApp extends StatelessWidget {
           "assets/logo.png",
         ),
         //nextScreen: LoginScreen(),
-        //nextScreen:  HomePage(),
-        nextScreen: LoginScreen(),
+        nextScreen:  HomePage(),
+        //nextScreen: AdminWc(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
         backgroundColor: kBackground,
