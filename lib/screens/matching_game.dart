@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-
 import 'package:sparkhub_game/constants/style.dart';
+import 'package:provider/provider.dart';
+import 'package:sparkhub_game/screens/finishedScreen.dart';
+import 'dart:async';
 
 class MatchingGame extends StatefulWidget {
   createState() => MatchingGameState();
 }
 
 class MatchingGameState extends State<MatchingGame> {
+    _navigator(String score){
+    Navigator.push(context,MaterialPageRoute( builder: (context) => Finish(score)));
+  }
   final Map<String, bool> score ={}; //map for the score takes the string (emoji) and bool (correct or not)
 
   final Map choices = {
@@ -29,14 +34,41 @@ class MatchingGameState extends State<MatchingGame> {
   };
 
   int counter = 0; 
+  late DateTime start_time;
+int time_to_finish = 10;
+bool finished = false;
+var time_difference;
+@override
+  initState(){
+    time_difference = 0;
+start_time = new DateTime.now();
+}
+void dispose() {
+    super.dispose();
+}
 
   @override
   Widget build(BuildContext context) {
+    
+    Timer.periodic(Duration(seconds:1), (timer) { 
+      setState(() {
+        if((time_to_finish - time_difference).toInt( )> 0){
+      time_difference = new DateTime.now().difference(start_time).inSeconds;
+    }else{
+      if(finished == false){
+        _navigator(score.length.toString());
+        finished = true;
+      }
+    }
+        
+      });
+    });
    return Scaffold(
      backgroundColor: kBackground,
-      appBar: AppBar(
-        title: Text('Score ${score.length} / 6',style:TextStyle(color: kBackground)),
-        backgroundColor: kButtonColor,
+       appBar: AppBar(
+        title: //Text('Score ${score.length} / 6',style:TextStyle(color: kBackground)), 
+        Text((time_to_finish - time_difference).toString()),
+        backgroundColor: Colors.yellow,
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.refresh),
@@ -88,13 +120,29 @@ class MatchingGameState extends State<MatchingGame> {
       ),
     );
   }
-
+      Widget _keepgoingScreen(BuildContext context) {
+    return Align(
+    child:InkWell(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+        child:Container( 
+           width:80,
+        height:80,
+        decoration: BoxDecoration( 
+          image: DecorationImage(
+              image:  AssetImage("assets/200w.gif"),fit: BoxFit.fill,)
+              )
+      ),
+    )
+    )
+    );
+   }
   Widget _buildDragTarget(emoji) {
     return DragTarget<String>(
       builder: (context, incoming, rejected) 
           {
         if (score[emoji] == true) {
-          return Text("");
+        return  _keepgoingScreen(context);
         } else {
           return  Container(height:80,width: 200,
           child:Text(thecolors[choices[emoji]],//red(color.red)

@@ -20,7 +20,7 @@ import 'providers/notes_provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  //runApp(MyApp());
   runApp(
     MultiProvider(
       providers: [
@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const MyHomePage(
               title: '',
             ),
-        '/match': (context) => LevelsPagematch(),
+        '/match': (context) => const LevelsPagematch(),
         '/MemoryGameLevelsPage': (context) => const LevelsPage(),
         '/memoeryGameHomeScreen': (context) => const MemoryGameHomeScreen(),
         '/wchome': (context) => HomePage(),

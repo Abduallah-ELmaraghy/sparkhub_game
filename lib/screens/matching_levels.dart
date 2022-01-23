@@ -14,6 +14,8 @@ class LevelsPagematch extends StatefulWidget {
 }
 
 class LevelsPageState extends State<LevelsPagematch> {
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +37,7 @@ class LevelsPageState extends State<LevelsPagematch> {
                   height: 150,
                   width: 150,
                   child: ElevatedButton(
-                    onPressed: () {
+                     onPressed: () {
                       setState(() {
                          Navigator.push(
                                 context,
@@ -43,8 +45,8 @@ class LevelsPageState extends State<LevelsPagematch> {
                                     builder: (context) => MatchingGameEasy()),
                               );
                       });
-                    },
-                    child: Column(
+                     },
+                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -65,12 +67,13 @@ class LevelsPageState extends State<LevelsPagematch> {
                     ),
                   )),
                   SizedBox(height: 20,width: 10,),
-              Container(
+                  
+               Container(
                 height: 150,
                 width: 150,
-                
                 child: ElevatedButton(
                   onPressed: () {
+
                     setState(() {
                        Navigator.push(
                                 context,
