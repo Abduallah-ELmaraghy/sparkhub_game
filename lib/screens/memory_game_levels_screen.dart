@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:sparkhub_game/models/wcmodels/Constants.dart';
 import '../models/memory_game_levels_model.dart';
 import '../constants/style.dart';
+import '../providers/notes_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 
 Details details = Details();
+AssetsAudioPlayer player1 = new AssetsAudioPlayer();
+AssetsAudioPlayer player2 = new AssetsAudioPlayer();
 
 class LevelsPage extends StatefulWidget {
   const LevelsPage({Key? key}) : super(key: key);
@@ -12,6 +18,10 @@ class LevelsPage extends StatefulWidget {
 }
 
 class LevelsPageState extends State<LevelsPage> {
+  LevelsPageState() {
+    //player1.stop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +48,13 @@ class LevelsPageState extends State<LevelsPage> {
                     setState(() {
                       details.setSelectedlevel(0);
                       Navigator.pushNamed(context, "/memoeryGameHomeScreen");
+
+                      player1.open(
+                          Audio("assets/Sounds/simple-game-countdown.wav"));
+                      Future.delayed(const Duration(seconds: 5), () {
+                        player2.open(
+                            Audio("assets/Sounds/A Day at the Circus.mp3"));
+                      });
                     });
                   },
                   child: Column(
@@ -78,6 +95,12 @@ class LevelsPageState extends State<LevelsPage> {
                   setState(() {
                     details.setSelectedlevel(1);
                     Navigator.pushNamed(context, "/memoeryGameHomeScreen");
+                    player1
+                        .open(Audio("assets/Sounds/simple-game-countdown.wav"));
+                    Future.delayed(const Duration(seconds: 5), () {
+                      player2
+                          .open(Audio("assets/Sounds/A Day at the Circus.mp3"));
+                    });
                   });
                 },
                 child: Column(
@@ -119,6 +142,12 @@ class LevelsPageState extends State<LevelsPage> {
                     setState(() {
                       details.setSelectedlevel(2);
                       Navigator.pushNamed(context, "/memoeryGameHomeScreen");
+                      player1.open(
+                          Audio("assets/Sounds/simple-game-countdown.wav"));
+                      Future.delayed(const Duration(seconds: 5), () {
+                        player2.open(
+                            Audio("assets/Sounds/A Day at the Circus.mp3"));
+                      });
                     });
                   },
                   child: Column(

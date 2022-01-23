@@ -15,6 +15,9 @@ class NotesProvider extends ChangeNotifier {
   List<Note> _notes = <Note>[];
 
   List<Note> get getNotes {
+    //Note note = new Note(8.toString(), 0.toString());
+    //_notes.add(note);
+    //readData();
     //Future.delayed(const Duration(seconds: 5));
     return _notes;
   }

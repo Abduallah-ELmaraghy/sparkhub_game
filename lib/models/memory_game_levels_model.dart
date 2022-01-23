@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../providers/notes_provider.dart';
 
 class Details {
   int level = 0;

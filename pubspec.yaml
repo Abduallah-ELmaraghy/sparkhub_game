@@ -53,6 +53,7 @@ dependencies:
   cloud_firestore: ^3.1.6
   firebase_auth: ^3.3.5
   
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -80,6 +81,7 @@ flutter:
     - assets/logo.png
     - assets/gameIcone.gif
     - assets/MemoryGameImages/
+    - assets/Sounds/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
