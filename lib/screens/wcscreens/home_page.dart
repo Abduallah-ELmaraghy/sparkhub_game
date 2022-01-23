@@ -16,11 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String difficulty = '';
 
-  // getLevel() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   lastLevel = prefs.getInt('savLev') ?? 0;
-  //   print(prefs.getInt('savLev'));
-  // }
 
   @override
   Widget build(BuildContext context) {

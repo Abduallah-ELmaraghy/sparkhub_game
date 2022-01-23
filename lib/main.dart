@@ -13,14 +13,13 @@ import 'package:sparkhub_game/providers/wordconnect_provider.dart';
 import 'package:sparkhub_game/Admins/admin_wc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-
 import 'screens/notes_screen.dart';
 import 'providers/notes_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  //runApp(MyApp());
   runApp(
     MultiProvider(
       providers: [
@@ -49,7 +48,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const MyHomePage(
               title: '',
             ),
-        '/match': (context) => LevelsPagematch(),
+        '/match': (context) => const LevelsPagematch(),
         '/MemoryGameLevelsPage': (context) => const LevelsPage(),
         '/memoeryGameHomeScreen': (context) => const MemoryGameHomeScreen(),
         '/wchome': (context) => HomePage(),
@@ -62,7 +61,7 @@ class MyApp extends StatelessWidget {
         ),
         //nextScreen: LoginScreen(),
         //nextScreen:  HomePage(),
-        nextScreen: AdminWc(),
+        nextScreen: LoginScreen(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
         backgroundColor: kBackground,
