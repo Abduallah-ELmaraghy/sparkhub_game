@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sparkhub_game/models/wcmodels/wordconnect.dart';
 
-class WordConnect extends ChangeNotifier {
+class WordConnectProvider extends ChangeNotifier {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-
+  List<WordConnect> _Levels = <WordConnect>[];
 //  String MapLetter;
 // List<Map<String, String>> wordsMap;
 // WordConnect(this.MapLetter,this.wordsMap);
@@ -16,19 +17,20 @@ class WordConnect extends ChangeNotifier {
 // List<String> get cart => MapLetter;
 // int get count => mapLetter1.length;
 
- 
-  Future<void> addWordMapController(List<Map<String,String>> item,String name) {
+
+  Future<void> addWordMapController(
+      List<Map<String, String>> item, String name) {
     // Call the user's CollectionReference to add a new user
     CollectionReference collection =
-    FirebaseFirestore.instance.collection('word_connect');
-
+        FirebaseFirestore.instance.collection('word_connect');
+    WordConnect x = WordConnect(name, item);
     return collection
         .add({
-          'Wordmap': item, // John Doe
-          'MapLetter':name, // John Doe
+          'Wordmap': x.WordMap, // John Doe
+          'MapLetter': x.MapLetter // John Doe
         })
         .then((value) => print("Recorded"))
         .catchError((error) => print("Failed to add record: $error"));
-     notifyListeners();
+    notifyListeners();
   }
 }

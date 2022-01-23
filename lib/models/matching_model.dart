@@ -1,27 +1,17 @@
 import 'package:flutter/material.dart';
 
 class Matching {
- late String? id;
- late String? color;
- late String? emoji;
-  final Map choices = {
-    '🦞': Colors.red,
-    '🌳': Colors.green,
-    '🥶': Colors.blue,
-    '🍋': Colors.yellow,
-    '🏀': Colors.orange,
-    '💜': Colors.purple,
-  };
+ final String id;
+  final Map choices;
     
 
- Matching({this.id,this.color,this.emoji});
+ Matching({required this.id,required this.choices});
 
  
   factory Matching.fromJson(Map<String, dynamic> json) {
     return Matching(
       id: json['id'],
-      color: json['data']['color'],
-      emoji: json['data']['emoji'],
+      choices: json['data']['choices'],
     );
   
   }
