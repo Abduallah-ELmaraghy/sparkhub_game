@@ -6,6 +6,7 @@ import '../models/memory_game_home_screen_model.dart';
 import '../constants/style.dart';
 import 'memory_game_levels_screen.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:sparkhub_game/constants/style.dart';
 
 MemoryGameHomePageModel homeModel = MemoryGameHomePageModel();
 
@@ -57,11 +58,13 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
     return new WillPopScope(
       child: new Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
+          //backgroundColor: Colors.blueGrey,
+          backgroundColor: kDarkGreen,
           centerTitle: true,
           title: const Text("Memory game"),
         ),
-        backgroundColor: Colors.blueGrey[200],
+        //backgroundColor: Colors.blueGrey[200],
+        backgroundColor: kBackground,
         body: ListView(children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
