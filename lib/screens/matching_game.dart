@@ -68,7 +68,7 @@ void dispose() {
        appBar: AppBar(
         title: //Text('Score ${score.length} / 6',style:TextStyle(color: kBackground)), 
         Text((time_to_finish - time_difference).toString()),
-        backgroundColor: Colors.yellow,
+        backgroundColor: kButtonColor,
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.refresh),

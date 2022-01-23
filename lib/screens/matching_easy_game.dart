@@ -65,26 +65,13 @@ void dispose() {
       });
     });
    return Scaffold(
-          backgroundColor: kDarkBlue,
+          backgroundColor: kBackground,
            appBar: AppBar(
              
         title: //Text('Score ${score.length} / 6',style:TextStyle(color: kBackground)), 
-        Text((time_to_finish - time_difference).toString()),
-        backgroundColor: Colors.yellow,
+        Text((time_to_finish - time_difference).toString(), style: TextStyle(fontSize: 20,color: kBlack.withOpacity(1),fontFamily: 'Cairo')),
+        backgroundColor: kButtonColor,
       ),
-      
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.refresh),
-
-        onPressed: () 
-        { 
-          setState(() {
-            score.clear();
-            counter++;
-          });
-        },
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       body: Row(
         // all the app in row
         mainAxisAlignment: MainAxisAlignment.spaceAround, // Place the free space evenly between the children widget and page

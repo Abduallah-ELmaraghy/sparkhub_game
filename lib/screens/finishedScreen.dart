@@ -19,7 +19,7 @@ class Finish extends StatelessWidget {
         body: Container(
            height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration( color:kDarkBlue,),
+            decoration: BoxDecoration( color:kBackground,),
              child: Padding(
                   padding: const EdgeInsets.only(top: 100),
                   child:Column(crossAxisAlignment: CrossAxisAlignment.center,
