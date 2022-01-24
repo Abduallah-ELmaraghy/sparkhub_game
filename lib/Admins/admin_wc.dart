@@ -67,7 +67,7 @@ class _AdminWcState extends State<AdminWc> {
               children: [
                 TextFormField(
                   validator: (value) {
-                    if (value!.length != 0) {
+                    if (value!.length != 5) {
                       return 'Length Must be equal 5';
                     }
                     return null;
