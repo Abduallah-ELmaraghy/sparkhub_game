@@ -65,8 +65,13 @@ class _AdminWcState extends State<AdminWc> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                
                 TextFormField(
+                  validator: (value) {
+                    if (value!.length != 0) {
+                      return 'Length Must be equal 5';
+                    }
+                    return null;
+                  },
                   autofocus: false,
                   style: new TextStyle(
                       fontWeight: FontWeight.normal, color: Colors.black),
@@ -74,105 +79,155 @@ class _AdminWcState extends State<AdminWc> {
                     hintText: 'Map Letter',
                     contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                     border: OutlineInputBorder(
-                      
                         borderRadius: BorderRadius.circular(32.0)),
                   ),
                   controller: MapLetterController,
                 ),
-                Row(children:[
-                Container(child:TextFormField(
-                  autofocus: true,
-                  style: new TextStyle(
-                      fontWeight: FontWeight.normal, color: Colors.black),
-                  decoration: InputDecoration(
-                    hintText: 'Word Map Number 1',
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
+                Row(children: [
+                  Container(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Invalid';
+                          }
+                          return null;
+                        },
+                        autofocus: true,
+                        style: new TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.black),
+                        decoration: InputDecoration(
+                          hintText: 'Word Map Number 1',
+                          contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32.0)),
+                        ),
+                        controller: WordMapController1,
+                      ),
+                      width: 200),
+                  SizedBox(
+                    width: 20,
                   ),
-                  controller: WordMapController1,
-                ),width:200),
-                SizedBox(width: 20,),
-                
-                Container(child:TextFormField(
-                  autofocus: true,
-                  style: new TextStyle(
-                      fontWeight: FontWeight.normal, color: Colors.black),
-                  decoration: InputDecoration(
-                    hintText: 'Index 1',
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
+                  Container(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Invalid';
+                          }
+                          return null;
+                        },
+                        autofocus: true,
+                        style: new TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.black),
+                        decoration: InputDecoration(
+                          hintText: 'Index 1',
+                          contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32.0)),
+                        ),
+                        controller: WordMapController2,
+                      ),
+                      width: 100),
+                ]),
+                Row(children: [
+                  Container(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Invalid';
+                          }
+                          return null;
+                        },
+                        autofocus: true,
+                        style: new TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.black),
+                        decoration: InputDecoration(
+                          hintText: 'Word Map Number 2',
+                          contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32.0)),
+                        ),
+                        controller: WordMapController3,
+                      ),
+                      width: 200),
+                  SizedBox(
+                    width: 20,
                   ),
-                  controller: WordMapController2,
-                ),
-                width:100),
-
-              ]),             Row(children:[
-                Container(child:TextFormField(
-                  autofocus: true,
-                  style: new TextStyle(
-                      fontWeight: FontWeight.normal, color: Colors.black),
-                  decoration: InputDecoration(
-                    hintText: 'Word Map Number 2',
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
+                  Container(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Invalid';
+                          }
+                          return null;
+                        },
+                        autofocus: true,
+                        style: new TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.black),
+                        decoration: InputDecoration(
+                          hintText: 'Index 2',
+                          contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32.0)),
+                        ),
+                        controller: WordMapController4,
+                      ),
+                      width: 100),
+                ]),
+                Row(children: [
+                  Container(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Invalid';
+                          }
+                          return null;
+                        },
+                        autofocus: true,
+                        style: new TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.black),
+                        decoration: InputDecoration(
+                          hintText: 'Word Map Number 3',
+                          contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32.0)),
+                        ),
+                        controller: WordMapController5,
+                      ),
+                      width: 200),
+                  SizedBox(
+                    width: 20,
                   ),
-                  controller: WordMapController3,
-                ),width:200),
-                SizedBox(width: 20,),
-
-                Container(child:TextFormField(
-                  autofocus: true,
-                  style: new TextStyle(
-                      fontWeight: FontWeight.normal, color: Colors.black),
-                  decoration: InputDecoration(
-                    hintText: 'Index 2',
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                  ),
-                  controller: WordMapController4,
-                ),
-                width:100),
-
-              ]),             
-              Row(children:[
-                Container(child:TextFormField(
-                  autofocus: true,
-                  style: new TextStyle(
-                      fontWeight: FontWeight.normal, color: Colors.black),
-                  decoration: InputDecoration(
-                    hintText: 'Word Map Number 3',
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                  ),
-                  controller: WordMapController5,
-                ),width:200),
-                SizedBox(width: 20,),
-                Container(child:TextFormField(
-                  autofocus: true,
-                  style: new TextStyle(
-                      fontWeight: FontWeight.normal, color: Colors.black),
-                  decoration: InputDecoration(
-                    hintText: 'Index 3',
-                    contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                  ),
-                  controller: WordMapController6,
-                ),
-                width:100),
-
-              ]),             
-                
+                  Container(
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Invalid';
+                          }
+                          return null;
+                        },
+                        autofocus: true,
+                        style: new TextStyle(
+                            fontWeight: FontWeight.normal, color: Colors.black),
+                        decoration: InputDecoration(
+                          hintText: 'Index 3',
+                          contentPadding:
+                              EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(32.0)),
+                        ),
+                        controller: WordMapController6,
+                      ),
+                      width: 100),
+                ]),
 
                 ///controller: mycontroller,
 
                 ElevatedButton(
-                    
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
                         printasdlast();
@@ -190,7 +245,8 @@ class _AdminWcState extends State<AdminWc> {
                         Provider.of<WordConnectProvider>(context, listen: false)
                             .addWordMapController(
                                 wordsMap, MapLetterController.text);
-
+ ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Processing Data')),);
 //context.watch<WordConnect>().addWordmap(mycontroller.text);
 
                       }
