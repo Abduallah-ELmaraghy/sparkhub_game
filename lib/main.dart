@@ -1,4 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sparkhub_game/constants/style.dart';
@@ -15,14 +16,24 @@ import 'package:sparkhub_game/Admins/admin_home.dart';
 //import 'package:sparkhub_game/Admins/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'screens/memory_game_admin_screen.dart';
+import 'Admins/memory_game_admin_screen.dart';
+import 'auth/login.dart';
 import 'providers/memory_game_provider.dart';
 import 'providers/matching_providers.dart';
 
+bool? islogin;
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
-  //runApp(MyApp());
+
+  var user = FirebaseAuth.instance.currentUser;
+  if (user == null) {
+    islogin = false;
+  } else {
+    islogin = true;
+  }
   runApp(
     MultiProvider(
       providers: [
@@ -58,15 +69,18 @@ class MyApp extends StatelessWidget {
         '/wchome': (context) => HomePage(),
         '/admin_memoryGame': (context) => const MemoryGameAdminScreen(),
         '/admin_wordconnect': (context) => const AdminWc(),
-
       },
       home: AnimatedSplashScreen(
         duration: 1500,
         splash: Image.asset(
           "assets/logo.png",
         ),
-       nextScreen: MyAdminHomePage(title: "",),
-       // nextScreen: LoginScreen(),
+        nextScreen: islogin == false
+            ? Login()
+            : MyHomePage(
+                title: '',
+              ),
+        // nextScreen: LoginScreen(),
         // nextScreen:  HomePage(),
         //nextScreen: AdminWc(),
         splashTransition: SplashTransition.fadeTransition,

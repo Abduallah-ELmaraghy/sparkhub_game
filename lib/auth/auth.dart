@@ -73,6 +73,8 @@ class Authentication {
       try {
         UserCredential userCredential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: myemail, password: mypassword);
+        var currentUser = FirebaseAuth.instance.currentUser;
+        var uid = currentUser!.uid;
         return userCredential;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {

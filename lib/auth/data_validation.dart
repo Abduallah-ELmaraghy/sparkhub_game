@@ -6,7 +6,7 @@ bool isEmail(String em) {
   return regExp.hasMatch(em);
 }
 
-bool isPassword(String password) {
+bool checkPassword(String password) {
   var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})");
   if (strongRegex.hasMatch(password)) {
     return true;
@@ -23,8 +23,8 @@ bool isNull(String value) {
   }
 }
 
-bool isLength(String value) {
-  if (value.length <= 2)
+bool checkLength(String value) {
+  if (value.length <= 2 || value.length >= 100)
     return false;
   else
     return true;

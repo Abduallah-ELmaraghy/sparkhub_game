@@ -33,30 +33,11 @@ class _SignUpState extends State<SignUp> {
                         myusername = val;
                       },
                       validator: (val) {
-                        if (!isEmail(val!)) {
-                          return "Please write a valid Email fomrat";
+                        if (checkLength(val!)) {
+                          return "username length is not valid";
                         }
-                        if (val!.length < 2) {
-                          return "Email can't to be less than 2 letter";
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.person),
-                          hintText: "username",
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(width: 1))),
-                    ),
-                    TextFormField(
-                      onSaved: (val) {
-                        myusername = val;
-                      },
-                      validator: (val) {
-                        if (val!.length > 100) {
-                          return "username can't to be larger than 100 letter";
-                        }
-                        if (val.length < 2) {
-                          return "username can't to be less than 2 letter";
+                        if (isNull(val)) {
+                          return "username can't be empty";
                         }
                         return null;
                       },
@@ -72,11 +53,11 @@ class _SignUpState extends State<SignUp> {
                         myemail = val;
                       },
                       validator: (val) {
-                        if (val!.length > 100) {
-                          return "Email can't to be larger than 100 letter";
+                        if (isEmail(val!)) {
+                          return "Email format is not valid";
                         }
-                        if (val.length < 2) {
-                          return "Email can't to be less than 2 letter";
+                        if (checkLength(val)) {
+                          return "Email length is not valid";
                         }
                         return null;
                       },
@@ -92,11 +73,11 @@ class _SignUpState extends State<SignUp> {
                         mypassword = val;
                       },
                       validator: (val) {
-                        if (val!.length > 100) {
-                          return "Password can't to be larger than 100 letter";
+                        if (val!.length < 6) {
+                          return "Password can't to be less than 6 letter";
                         }
-                        if (val.length < 4) {
-                          return "Password can't to be less than 4 letter";
+                        if (checkPassword(val)) {
+                          return "weak Password, Password should contain one Uppercase charracter, one ";
                         }
                         return null;
                       },
@@ -124,8 +105,7 @@ class _SignUpState extends State<SignUp> {
                           ],
                         )),
                     Container(
-                        child: RaisedButton(
-                      textColor: Colors.white,
+                        child: ElevatedButton(
                       onPressed: () async {
                         UserCredential response = await Authentication().signUp(
                             formstate: formstate,
