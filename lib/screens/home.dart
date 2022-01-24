@@ -89,25 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       maximumSize: const Size(210, 50),
                     )),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/admin_memoryGame');
-                    },
-                    child: const Text("Admin",
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF101324))),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.all(10.0),
-                      primary: kButtonColor,
-                      minimumSize: const Size(210, 50),
-                      maximumSize: const Size(210, 50),
-                    )),
-              ),
-              const Expanded(child: SizedBox()),
+           
             ],
           ),
         ),
