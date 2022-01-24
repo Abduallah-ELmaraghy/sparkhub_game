@@ -9,7 +9,7 @@ import 'package:sparkhub_game/constants/style.dart';
 
 Details details = Details();
 AssetsAudioPlayer player1 = AssetsAudioPlayer();
-AssetsAudioPlayer player2 = AssetsAudioPlayer();
+//AssetsAudioPlayer player2 = AssetsAudioPlayer();
 
 class LevelsPage extends StatefulWidget {
   const LevelsPage({Key? key}) : super(key: key);
@@ -54,12 +54,12 @@ class LevelsPageState extends State<LevelsPage> {
                       details.setSelectedlevel(0);
                       Navigator.pushNamed(context, "/memoeryGameHomeScreen");
 
-                      player1.open(
-                          Audio("assets/Sounds/simple-game-countdown.wav"));
-                      Future.delayed(const Duration(seconds: 5), () {
-                        player2.open(
-                            Audio("assets/Sounds/A Day at the Circus.mp3"));
-                      });
+                      player1
+                          .open(Audio("assets/Sounds/A Day at the Circus.mp3"));
+                      //Future.delayed(const Duration(seconds: 5), () {
+                      // player2.open(
+                      //Audio("assets/Sounds/A Day at the Circus.mp3"));
+                      //});
                     });
                   },
                   child: Column(
@@ -101,11 +101,11 @@ class LevelsPageState extends State<LevelsPage> {
                     details.setSelectedlevel(1);
                     Navigator.pushNamed(context, "/memoeryGameHomeScreen");
                     player1
-                        .open(Audio("assets/Sounds/simple-game-countdown.wav"));
-                    Future.delayed(const Duration(seconds: 5), () {
+                        .open(Audio("assets/Sounds/A Day at the Circus.mp3"));
+                    /* Future.delayed(const Duration(seconds: 5), () {
                       player2
                           .open(Audio("assets/Sounds/A Day at the Circus.mp3"));
-                    });
+                    });*/
                   });
                 },
                 child: Column(
@@ -147,12 +147,12 @@ class LevelsPageState extends State<LevelsPage> {
                     setState(() {
                       details.setSelectedlevel(2);
                       Navigator.pushNamed(context, "/memoeryGameHomeScreen");
-                      player1.open(
-                          Audio("assets/Sounds/simple-game-countdown.wav"));
-                      Future.delayed(const Duration(seconds: 5), () {
+                      player1
+                          .open(Audio("assets/Sounds/A Day at the Circus.mp3"));
+                      /* Future.delayed(const Duration(seconds: 5), () {
                         player2.open(
                             Audio("assets/Sounds/A Day at the Circus.mp3"));
-                      });
+                      });*/
                     });
                   },
                   child: Column(

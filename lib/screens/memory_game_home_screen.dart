@@ -38,10 +38,10 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
     myPairs.shuffle();
 
     visiblecards = myPairs;
-    player1.open(Audio("assets/Sounds/simple-game-countdown.wav"));
-    Future.delayed(const Duration(seconds: 5), () {
-      player2.open(Audio("assets/Sounds/A Day at the Circus.mp3"));
-    });
+    //player1.open(Audio("assets/Sounds/simple-game-countdown.wav"));
+    //Future.delayed(const Duration(seconds: 5), () {
+    player1.open(Audio("assets/Sounds/A Day at the Circus.mp3"));
+    // });
     Future.delayed(const Duration(seconds: 4), () {
       setState(() {
         print("2 seconds done");
@@ -123,7 +123,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                               setState(() {
                                 homeModel.points = 0;
                                 player1.stop();
-                                player2.stop();
+                                // player2.stop();
                                 reStart();
                               });
                             },
@@ -152,7 +152,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
                               Navigator.pushNamed(
                                   context, '/MemoryGameLevelsPage');
                               player1.stop();
-                              player2.stop();
+                              // player2.stop();
                             },
                             child: Container(
                               height: 50,
@@ -185,7 +185,7 @@ class MemoryGameHomeScreenState extends State<MemoryGameHomeScreen> {
       ),
       onWillPop: () async {
         player1.stop();
-        player2.stop();
+        //player2.stop();
         return true;
       },
     );
