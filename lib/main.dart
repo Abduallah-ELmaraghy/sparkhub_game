@@ -11,10 +11,11 @@ import 'package:sparkhub_game/screens/memory_game_levels_screen.dart';
 import 'package:sparkhub_game/screens/wcscreens/home_page.dart';
 import 'package:sparkhub_game/providers/wordconnect_provider.dart';
 import 'package:sparkhub_game/Admins/admin_wc.dart';
+//import 'package:sparkhub_game/Admins/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
-import 'screens/notes_screen.dart';
-import 'providers/notes_provider.dart';
+import 'screens/memory_game_admin_screen.dart';
+import 'providers/memory_game_provider.dart';
 import 'providers/matching_providers.dart';
 
 Future<void> main() async {
@@ -24,7 +25,7 @@ Future<void> main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => NotesProvider()),
+        ChangeNotifierProvider(create: (_) => MemoryGameProvider()),
         ChangeNotifierProvider(create: (_) => MatchingProviders()),
         ChangeNotifierProvider(create: (_) => WordConnectProvider()),
       ],
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
         '/MemoryGameLevelsPage': (context) => const LevelsPage(),
         '/memoeryGameHomeScreen': (context) => const MemoryGameHomeScreen(),
         '/wchome': (context) => HomePage(),
-        '/admin_memoryGame': (context) => Home_Screen(),
+        '/admin_memoryGame': (context) => const MemoryGameAdminScreen(),
       },
       home: AnimatedSplashScreen(
         duration: 1500,
@@ -62,8 +63,8 @@ class MyApp extends StatelessWidget {
           "assets/logo.png",
         ),
         //nextScreen: LoginScreen(),
-        //nextScreen:  HomePage(),
-        nextScreen: LoginScreen(),
+        nextScreen:  HomePage(),
+        //nextScreen: AdminWc(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
         backgroundColor: kBackground,

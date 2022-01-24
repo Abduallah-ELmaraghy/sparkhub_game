@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:sparkhub_game/models/wcmodels/Constants.dart';
+
 import '../models/memory_game_levels_model.dart';
 import '../constants/style.dart';
-import '../providers/notes_provider.dart';
+import '../providers/memory_game_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:sparkhub_game/constants/style.dart';
 
 Details details = Details();
-AssetsAudioPlayer player1 = new AssetsAudioPlayer();
-AssetsAudioPlayer player2 = new AssetsAudioPlayer();
+AssetsAudioPlayer player1 = AssetsAudioPlayer();
+AssetsAudioPlayer player2 = AssetsAudioPlayer();
 
 class LevelsPage extends StatefulWidget {
   const LevelsPage({Key? key}) : super(key: key);
@@ -18,25 +19,29 @@ class LevelsPage extends StatefulWidget {
 }
 
 class LevelsPageState extends State<LevelsPage> {
-  LevelsPageState() {
-    //player1.stop();
-  }
+  LevelsPageState() {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueGrey[200],
+        backgroundColor: kBackground,
         appBar: AppBar(
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: kDarkGreen,
           centerTitle: true,
           title: const Text("Memory game"),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.max,
           children: [
+            Image.asset(
+              "assets/memoryGame.gif",
+              height: 200,
+              fit: BoxFit.fitWidth,
+            ),
             Container(
-                height: 200,
+                height: 100,
                 width: 400,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(
@@ -76,14 +81,14 @@ class LevelsPageState extends State<LevelsPage> {
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
+                    primary: const Color(0xff0d5063),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
                 )),
             Container(
-              height: 200,
+              height: 100,
               width: 400,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
@@ -122,7 +127,7 @@ class LevelsPageState extends State<LevelsPage> {
                   ],
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.orange,
+                  primary: const Color(0xff0d5063),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -130,7 +135,7 @@ class LevelsPageState extends State<LevelsPage> {
               ),
             ),
             Container(
-              height: 200,
+              height: 100,
               width: 400,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(
@@ -169,7 +174,7 @@ class LevelsPageState extends State<LevelsPage> {
                     ],
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.red,
+                    primary: const Color(0xff0d5063),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
