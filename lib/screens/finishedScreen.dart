@@ -22,7 +22,8 @@ class Finish extends StatelessWidget {
             decoration: BoxDecoration( color:kBackground,),
              child: Padding(
                   padding: const EdgeInsets.only(top: 100),
-                  child:Column(crossAxisAlignment: CrossAxisAlignment.center,
+                  child:
+                  Column(crossAxisAlignment: CrossAxisAlignment.center,
         children: [ 
               Container( child:Row(mainAxisAlignment: MainAxisAlignment.center,
         children:[
