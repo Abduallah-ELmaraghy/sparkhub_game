@@ -11,6 +11,7 @@ import 'package:sparkhub_game/screens/memory_game_levels_screen.dart';
 import 'package:sparkhub_game/screens/wcscreens/home_page.dart';
 import 'package:sparkhub_game/providers/wordconnect_provider.dart';
 import 'package:sparkhub_game/Admins/admin_wc.dart';
+import 'package:sparkhub_game/Admins/admin_home.dart';
 //import 'package:sparkhub_game/Admins/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -56,13 +57,16 @@ class MyApp extends StatelessWidget {
         '/memoeryGameHomeScreen': (context) => const MemoryGameHomeScreen(),
         '/wchome': (context) => HomePage(),
         '/admin_memoryGame': (context) => const MemoryGameAdminScreen(),
+        '/admin_wordconnect': (context) => const AdminWc(),
+
       },
       home: AnimatedSplashScreen(
         duration: 1500,
         splash: Image.asset(
           "assets/logo.png",
         ),
-        nextScreen: LoginScreen(),
+       nextScreen: MyAdminHomePage(title: "",),
+       // nextScreen: LoginScreen(),
         // nextScreen:  HomePage(),
         //nextScreen: AdminWc(),
         splashTransition: SplashTransition.fadeTransition,

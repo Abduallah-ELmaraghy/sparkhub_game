@@ -24,6 +24,15 @@ var gameName = Text(
       fontWeight: FontWeight.bold,
       color: Color.fromRGBO(255, 228, 81, 1),
     ),
+  ),);
+  var AdminName = Text(
+  'Admin Side',
+  style: GoogleFonts.gugi(
+    textStyle: const TextStyle(
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+      color: Color.fromRGBO(255, 228, 81, 1),
+    ),
   ),
 );
 
