@@ -95,10 +95,10 @@ class GameList extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.videogame_asset_rounded),
               title: Text(
-                game.level,
+                "Level:" + game.level,
               ),
               subtitle: Text(
-                game.levelScore,
+                "Level score:" + game.levelScore,
               ),
               trailing: IconButton(
                   icon: const Icon(Icons.delete),

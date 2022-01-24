@@ -62,8 +62,8 @@ class MyApp extends StatelessWidget {
         splash: Image.asset(
           "assets/logo.png",
         ),
-        //nextScreen: LoginScreen(),
-        nextScreen:  HomePage(),
+        nextScreen: LoginScreen(),
+        // nextScreen:  HomePage(),
         //nextScreen: AdminWc(),
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.bottomToTop,
